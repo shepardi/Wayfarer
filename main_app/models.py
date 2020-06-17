@@ -17,7 +17,7 @@ class Profile(models.Model):
   
 class Post(models.Model):
   title = models.CharField(max_length=100)
-  city = models.CharField(max_length=3, choices=CURRENT_CITY, default=CURRENT_CITY[0][0])
+  current_city = models.CharField(max_length=3, choices=CURRENT_CITY, default=CURRENT_CITY[0][0])
   description = models.TextField(max_length=250)
   profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
