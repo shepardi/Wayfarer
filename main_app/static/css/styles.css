@@ -1,3 +1,14 @@
+:root {
+  --white: #fff;
+  --dark-blue: #100935;
+  --orange: #FF9C20;
+  --pink: #F72AEE;
+  --purple: #973DFC;
+  --light-blue: #01C9FF;
+  --med-blue: #14ADFF;
+  --ocean-bue: #0071FF;
+}
+
 body {
     padding-top: 56px;
     
@@ -17,8 +28,15 @@ body {
     margin-bottom: 30px;
   }
 
-  footer{
-      position:fixed
+  .navbar{
+    height: 10vh;
+    background-color: var(--dark-blue);
   }
 
- 
+  .navbar a{
+    color: var(--white)
+  }
+
+  .footer{
+    color: var(--dark-blue); 
+ }
