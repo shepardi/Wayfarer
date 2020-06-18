@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Profile of {{ user }}</h1>
+<h1>Profile of {{user}} who joined  {{ user.date_joined }}</h1>
 
 {% for town in city %}
 <p> {{ town }} </p>
