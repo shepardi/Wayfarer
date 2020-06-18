@@ -13,7 +13,7 @@ CURRENT_CITY = (
 
 class Profile(models.Model):
   name = models.CharField(max_length=100)
-  join_date = models.DateField(default=date.today())
+  join_date = models.DateField(auto_now_add=True)
   
 class Post(models.Model):
   title = models.CharField(max_length=100)

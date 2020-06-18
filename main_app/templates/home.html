@@ -1,22 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>Home Page</h1>
-
-<form action="" method="post">
+<h1>Works</h1>
+<a href="/profile">Login</a>
+<form action="/" method="post">
   {% csrf_token %}
   {{ form.as_p }}
 
   <input type="submit" value='Log In'>
 
-</form>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
 
-<form action="" method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
+    <form action="/" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
 
-  <input type="submit" value='Sign Up'>
+    </form>
 
-</form>
-{% endblock %}
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <input type="submit" value='Sign Up'>
+
+    </form>
+    {% endblock %}
