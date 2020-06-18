@@ -28,6 +28,14 @@ body {
   }
 
   .navbar{
-    color: var(--dark-blue)
-    
+    height: 10vh;
+    background-color: var(--dark-blue);
   }
+
+  .navbar a{
+    color: var(--white)
+  }
+
+  .footer{
+    color: var(--dark-blue); 
+ }
