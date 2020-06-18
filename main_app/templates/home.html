@@ -1,8 +1,9 @@
   {% extends 'base.html' %}
 
   {% block content %}
-
-  <form action="" method="post">
+<h1>Works</h1>
+<a href="/profile" >Login</a>
+  <form action="/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
   
@@ -10,7 +11,7 @@
 
   </form>
 
-  <form action="" method="post">
+  <form action="/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
 
