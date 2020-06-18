@@ -1,58 +1,100 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<!-- Slide Show View -->
-<section>
+  {% block content %}
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-      <!-- Slide One  -->
-      <div class="carousel-item active" style="background-image: url('../static/images/london-aerial.jpg')">
-        <div class="carousel-caption d-none d-md-block">
+   <!-- ----------------------------- Slide Show View ----------------------------- -->
+  <section>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One  -->
+        <div class="carousel-item active" style="background-image: url('../static/images/london-aerial.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+          </div>
+        </div>
+        <!-- Slide Two -->
+        <div class="carousel-item" style="background-image: url('../static/images/sanfran.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+          </div>
+        </div>
+        <!-- Slide Three  -->
+        <div class="carousel-item" style="background-image: url('../static/images/sydney.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+          </div>
+        </div>
+        <!-- Slide Four -->
+        <div class="carousel-item" style="background-image: url('../static/images/seattle.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+          </div>
         </div>
       </div>
-      <!-- Slide Two -->
-      <div class="carousel-item" style="background-image: url('../static/images/sanfran.jpg')">
-        <div class="carousel-caption d-none d-md-block">
-        </div>
-      </div>
-      <!-- Slide Three  -->
-      <div class="carousel-item" style="background-image: url('../static/images/sydney.jpg')">
-        <div class="carousel-caption d-none d-md-block">
-        </div>
-      </div>
-      <!-- Slide Four -->
-      <div class="carousel-item" style="background-image: url('../static/images/seattle.jpg')">
-        <div class="carousel-caption d-none d-md-block">
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+  </section>
+
+  
+    <!-- ----------------------------- Modal Login Form ----------------------------- -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Close Button -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <!-- Sign In -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Sign In</h5>
+          </div>
+          <div class="modal-body">
+          <!-- Sign-In  Form -->
+            <form action="" method="POST">
+              {% csrf_token %}
+              {{ form.as_p }}
+
+              <input type="submit" value='Log In'>
+            </form>
+          </div>
+          <!-- Sign Up -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Sign Up</h5>
+          </div>
+          <div class="modal-body">
+            <!-- Sign-Up Form -->
+            <form action="" method="POST">
+              {% csrf_token %}
+              {{ form.as_p }}
+        
+              <input type="submit" value='Sign Up'>
+
+            </form>  
+          </div>
+
         </div>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
 
-</section>
-
-<!-- Modal Popup -->
 
 <!-- Page Content -->
 <div class="container">
 
   <h1 class="my-4">Wayfarer Is...</h1>
 
-  <!-- Marketing Icons Section -->
+
+  <!-- ----------------------------- Market Icons Section ----------------------------- -->
   <div class="row">
     <div class="col-lg-4 mb-4">
       <div class="card h-100">
@@ -90,4 +132,4 @@
   </div>
 
   <!-- Waferer is .... -->
-  {% endblock %}
+ {% endblock %}
