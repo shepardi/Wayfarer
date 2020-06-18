@@ -12,8 +12,8 @@ CURRENT_CITY = (
 )
 
 class Profile(models.Model):
-  name = models.CharField(max_length=100)
-  join_date = models.DateField(auto_now_add=True)
+  current_city = models.CharField(max_length=3, choices=CURRENT_CITY, default=CURRENT_CITY[0][0])
+  user=models.ForeignKey(User, on_delete=models.CASCADE, default='1')
   
 class Post(models.Model):
   title = models.CharField(max_length=100)
