@@ -36,6 +36,10 @@ body {
     color: var(--white)
   }
 
-  .footer{
-    color: var(--dark-blue); 
- }
+  .navbar a:hover{
+    color: var(--orange)
+  }
+
+  .my-4{
+    text-align: center;
+  }
