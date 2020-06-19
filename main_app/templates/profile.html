@@ -1,12 +1,89 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<H1>BOOOOOOOOOTSTRAPPPP</H1>
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Title ( Profile: user ) -->
+  <h1 class="mt-4 mb-3">Profile:
+    <small>{{user.first_name}}</small>
+  </h1>
+
+  <!-- Breadcrumb Profile Page -->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="index.html">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Profile Page</li>
+  </ol>
+
+  <!-- Profile User Row -->
+  <div class="row">
+
+    <!-- Profile (Image) -->
+    <div class="col-md-6">
+      <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+    </div>
+
+    <!-- Profile (User Form) -->
+    <div class="col-md-6">
+      <!--  User First name Profile Form -->
+      <form action="{% url 'profile' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder={{user.first_name}} name='name'>
+        <input class="btn" type="submit">
+      </form>
+
+      <!-- City name Form -->
+      <form action="{% url 'profile' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+      </form>
+    </div>
+
+  </div>
+  <!-- [END] Profile User Row -->
+  
+  <!-- Related Posts Row-->
+  <h3 class="my-4">{{user.first_name}} Recent Posts</h3>
+
+  <div class="row">
+
+    <!-- Posts (Foor-Loop Postings) -->
+    {% for post in posts %}
+    <div class="col-md-3 col-sm-6 mb-4">
+      <a href="{% url 'post' post.id %}">
+        <!-- Post Card -->
+        <div class="card">
+
+          <!-- Title -->
+          <p>{{post.title}}</p>
+
+          <!-- Picture -->
+          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+  <!-- [END] Related Posts Row-->
+
+</div>
+
+
+
+{% endblock %}
+
+<!--  User First name Profile Form -->
 <form action="{% url 'profile' %}" method="POST">
   {% csrf_token %}
   <input type="text" placeholder={{user.first_name}} name='name'>
   <input type="submit">
 </form>
+
+<!-- City name Form -->
 <h3>change city</h3>
 <form action="{% url 'profile' %}" method="POST">
   {% csrf_token %}
@@ -14,10 +91,6 @@
   <input type="submit">
 </form>
 
-<h1> Hello {{user.first_name}} u joined on {{user.date_joined}} you had choisen {{city}}</h1>
-<H2> UR posts</H2>
-{% for post in posts  %}
-<a href="{% url 'post' post.id %}"> {{ post.title }} </a>
-{% endfor %}
+<!-- Message Showing The User has joined @ date() -->
+<h1> Hello {{user.first_name}}, you joined on {{user.date_joined}} you had chosen {{city}}</h1>
 
-{% endblock %}
