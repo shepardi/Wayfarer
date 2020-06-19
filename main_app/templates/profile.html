@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+<!-- TODO: place join date on profile page -->
 {% block content %}
 <!-- Page Content -->
 <div class="container">
@@ -12,7 +12,7 @@
   <!-- Breadcrumb Profile Page -->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="index.html">Home</a>
+      <a href="{% url 'home' %}">Home</a>
     </li>
     <li class="breadcrumb-item active">Profile Page</li>
   </ol>
@@ -44,14 +44,14 @@
       </form>
     </div>
 
-    
 
 
-    
+
+
 
   </div>
   <!-- [END] Profile User Row -->
-  
+
   <!-- Related Posts Row-->
   <h3 class="my-4">{{user.first_name}} Recent Posts</h3>
 
@@ -82,8 +82,3 @@
 
 
 {% endblock %}
-
-
-
-
-
