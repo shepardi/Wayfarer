@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Profile of {{user}} who joined  {{ user.date_joined }}</h1>
+<form action="{% url 'profile' %}" method="post">
+  {% csrf_token %}
+  <input type="text" placeholder={{user.first_name}} name='name'>
+  <input type="submit">
+</form>
+<h3>change city</h3>
+<form action="{% url 'profile' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit">
+</form>
 
-{% for town in city %}
-<p> {{ town }} </p>
+<h1> Hello {{user.first_name}} u joined on {{user.date_joined}} you had choisen {{city}}</h1>
+<H2> UR posts</H2>
+{% for post in posts  %}
+<p> {{ post.title }} </p>
 {% endfor %}
 {% endblock %}
