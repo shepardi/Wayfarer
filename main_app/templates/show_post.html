@@ -11,6 +11,8 @@
     <h1>{{ post.description }}</h1>
     <h1>{{ post.profile.user.username }}</h1>
 
+    <a href="{% url 'delete' city_code post.id %}"> Delete</a>
+    <a href="{% url 'edit' post.id %}"> Edit</a>
 
 </body>
 </html>
