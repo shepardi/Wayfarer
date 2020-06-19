@@ -61,6 +61,9 @@
         <h5 class="modal-title" id="staticBackdropLabel">Sign In</h5>
       </div>
       <div class="modal-body">
+        {% if err2 %}
+        <p>{{ err2 }}</p>
+        {% endif %}
         <!-- Sign-In  Form -->
         <form action="{% url 'home' %}" method="POST">
           {% csrf_token %}
