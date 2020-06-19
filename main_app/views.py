@@ -3,6 +3,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.core.mail import send_mail
+
 
 
 #user = User.objects.create_user('myusername', 'myemail@crazymail.com', 'mypassword')
@@ -12,17 +14,15 @@ from django.contrib import auth
 #user.save()
 # Create your views here.
 
-
-from  .models import Post, CURRENT_CITY, Profile
-from .forms import Profile_Form
-
+from  .models import Post, CURRENT_CITY, Profile, City 
+from  .forms import Profile_Form ,Post_Form
 
 ########### USER CREATION ##################
 
 
 def home(request):
-  err = ''
-  err2 = ''
+  err=''
+  err2=''
   if request.method == 'POST' :  
     # user = User.objects.create_user(request.POST['username'], request.POST['email'],request.POST['password'] )
     form = Profile_Form(request.POST)
@@ -35,6 +35,7 @@ def home(request):
         new_profile.user=user
         new_profile.save()
         login(request,user)
+        send_mail('Welcome to Wayfair!','Hello ','wwayfair82@gmail.com',[request.POST['email']],fail_silently=False )
         return redirect('profile')
       except:
         err="ALREADY MADE THIS PROFILE"
@@ -46,7 +47,7 @@ def home(request):
         login(request,user)
         return redirect('profile')
       else:
-        context = {'form': form, "err2": "Wrong username or Pass"}
+        context = {'form': form , "err2":"Wrong username or Pass" }
         return render(request, 'home.html', context)
   form = Profile_Form()
   context = {'form': form , "err":err }
@@ -80,14 +81,55 @@ def view_cities(request):
 
 def view_post(request , post_id):
   post=Post.objects.get(id=post_id)
-  context={"post":post, 'city': FindCity(post.current_city)  }
-  return render(request, 'show_post.html', context)
+  context={"post":post, 'city': FindCity(post.current_city) , "city_code" : post.current_city }
+  return render(request , 'show_post.html' , context)
 
   
 def logout(request):
   auth.logout(request)
   return redirect('home')
 
+def delete(request, post_id ,city_name) :
+  Post.objects.get(id=post_id).delete()
+  return redirect( 'test' , city_name=city_name )
+  
+def edit_post(request , post_id):
+    post=Post.objects.get(id=post_id)
+    if request.method== 'POST':
+      changed_post=Post_Form(request.POST,instance=post)
+      if changed_post.is_valid():
+        changed_post.save()
+        return redirect('post' , post_id=post_id)
+    form=Post_Form(instance=post)
+    context={'form' :form , 'post_id':post_id}
+    return render(request, 'testprofile.html' , context)
+
+
+
+def test(request , city_name):
+  posts=Post.objects.all().order_by('-date')
+  city=[]
+  if request.method== 'POST':
+      form=Post_Form(request.POST)
+      if form.is_valid():
+        new_post=form.save(commit=False)
+        new_post.current_city=RiverceCity(request.POST['city'])
+        profile= Profile.objects.get(user=request.user)
+        new_post.profile=profile
+        new_post.save()
+  for post in posts:
+    if post.current_city == city_name:
+      city.append(post)
+  form=Post_Form()
+  city_full_name=FindCity(city_name)
+  context={"city" : city , 'form':form , 'city_name':city_full_name , 'city_code':city_name} 
+  
+  return render(request, 'test.html', context)
+
+
+  
+
+  
 
 def FindCity(city):
   if city == 'LDN':
