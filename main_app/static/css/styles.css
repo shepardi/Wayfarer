@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 :root {
+  /* Color Palette */
   --white: #fff;
   --dark-blue: #100935;
   --orange: #FF9C20;
@@ -9,38 +12,40 @@
   --ocean-bue: #0071FF;
 }
 
-body {
-    padding-top: 56px;
-    
-  }
+body{  
+  font-family: 'Opens Sans', sans-serif;   
+}
   
-  .carousel-item {
-    height: 65vh;
-    min-height: 300px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-  
-  .portfolio-item {
-    margin-bottom: 30px;
-  }
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
-  .navbar{
-    height: 10vh;
-    background-color: var(--dark-blue);
-  }
+.portfolio-item{
+  margin-bottom: 30px;
+}
 
-  .navbar a{
-    color: var(--white)
-  }
+.navbar{
+  height: 12.5vh;
+  background-color: var(--dark-blue);
+}
 
-  .navbar a:hover{
-    color: var(--orange)
-  }
+.navbar a{
+  color: var(--white);
+}
 
-  .my-4{
-    text-align: center;
-  }
+.navbar a:hover{
+  color: var(--light-blue);
+}
+
+.my-4, .card-header{
+  text-align: center;
+}
+
+
+
