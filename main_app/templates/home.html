@@ -62,7 +62,7 @@
       </div>
       <div class="modal-body">
         <!-- Sign-In  Form -->
-        <form action="{% url 'profile' %}" method="POST">
+        <form action="{% url 'home' %}" method="POST">
           {% csrf_token %}
           <input type="text" name='username' placeholder="username">
           <input type="password" name='password' placeholder="pasword">
@@ -76,7 +76,10 @@
       </div>
       <div class="modal-body">
         <!-- Sign-Up Form -->
-        <form action="{% url 'profile' %}" method="post">
+        <form action="{% url 'home' %}" method="POST">
+          {% if err %}
+          <p>  {{err}} </p>
+          {% endif %}
           {% csrf_token %}
           {{ form.as_p }}
           <input type="text" name='name' placeholder="name">
