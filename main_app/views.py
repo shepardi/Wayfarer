@@ -70,6 +70,9 @@ def profile(request):
   context={'user':request.user, 'form' :form , "posts" : posts , 'city' : city }
   return render(request, 'profile.html', context)
 
+# Cities Routes (Temp)
+def view_cities(request):
+  return render(request,'cities.html')
 
 
 def view_post(request , post_id):

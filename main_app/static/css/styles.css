@@ -8,7 +8,7 @@
   --purple: #973DFC;
   --light-blue: #01C9FF;
   --med-blue: #14ADFF;
-  --ocean-bue: #0071FF;
+  --ocean-blue: #0071FF;
 }
 body{  
   font-family: 'Monsterrat', sans-serif;  
@@ -37,4 +37,18 @@ body{
 }
 .my-4, .card-header{
   text-align: center;
+}
+
+.round{
+  border-radius:20px;
+}
+
+.city-tag{
+  background-color: var(--med-blue);
+  color:var(--dark-blue);
+}
+
+.city{
+  background-color: var(--ocean-blue);
+  color:var(--dark-blue);
 }

@@ -8,7 +8,9 @@
     <h1 class="mt-4 mb-3">{{ post.title }}
         <small>by
             {{ post.profile.user.username }}
+            <p class="float-right">{{city}}</p>
         </small>
+
     </h1>
 
     <!-- Breadcrumbs -->
@@ -29,11 +31,12 @@
 
             <!-- Preview Image -->
             <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+            <p>{{ city }}</p>
 
             <hr>
 
             <!-- Date/Time -->
-            <p>Posted on ....</p>
+            <p>Posted on ...</p>
 
             <hr>
 

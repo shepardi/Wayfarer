@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<!-- Page Content -->
+<div class="container-fluid pt-3">
+
+    <!-- Breadcrumbs -->
+    <!-- <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="{% url 'profile' %}">Profile</a>
+        </li>
+        <li class="breadcrumb-item active"> {{ post.title }}</li>
+    </ol> -->
+
+    <div class="row">
+
+        <!-- City Selection Column -->
+        <div class="col-lg-4 p-4 mx-4 border city ">
+            <h2>Cities</h2>
+            <div class=" mb-4 d-flex border p-2 round city-tag">
+                <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+                <h3 class="my-auto float left ml-1">London</h3>
+            </div>
+            <div class=" mb-4 d-flex border p-2 round city-tag">
+                <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+                <h3 class="my-auto float left ml-1">San Fransico</h3>
+
+            </div>
+            <div class=" mb-4 d-flex border p-2 round city-tag">
+                <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+                <h3 class="my-auto float left ml-1">Sydney</h3>
+
+            </div>
+            <div class=" mb-4 d-flex border p-2 round city-tag">
+                <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+                <h3 class="my-auto float left ml-1">Seattle</h3>
+
+            </div>
+        </div>
+
+        <!-- City Posts Column -->
+        <div class="col-md-7 border">
+            <div>
+                <!-- City Name -->
+                <div>
+                    <h2>Example City</h2>
+                    <p>Example Country</p>
+                </div>
+
+                <!-- City Image -->
+                <div>
+                    <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+                </div>
+
+            </div>
+
+            <h2>Posts</h2>
+            <!-- Posts Lists -->
+            <!-- for loop start -->
+            <div class="border p-2 round mb-4">
+                <!-- Title -->
+                <h3>Post Title</h3>
+                <!-- Description -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim error voluptatum aliquam
+                    accusamus, autem, id tempore accusantium impedit dolores neque beatae nemo consequatur
+                    mollitia cumque unde numquam maxime nobis veritatis.
+                </p>
+            </div>
+
+            <div class="border p-2 round mb-4 ">
+                <!-- Title -->
+                <h3>Post Title</h3>
+                <!-- Description -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim error voluptatum aliquam
+                    accusamus, autem, id tempore accusantium impedit dolores neque beatae nemo consequatur
+                    mollitia cumque unde numquam maxime nobis veritatis.
+                </p>
+            </div>
+
+            <div class="border p-2 round mb-4 ">
+                <!-- Title -->
+                <h3>Post Title</h3>
+                <!-- Description -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim error voluptatum aliquam
+                    accusamus, autem, id tempore accusantium impedit dolores neque beatae nemo consequatur
+                    mollitia cumque unde numquam maxime nobis veritatis.
+                </p>
+            </div>
+            <div class="border p-2 round mb-4 ">
+                <!-- Title -->
+                <h3>Post Title</h3>
+                <!-- Description -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim error voluptatum aliquam
+                    accusamus, autem, id tempore accusantium impedit dolores neque beatae nemo consequatur
+                    mollitia cumque unde numquam maxime nobis veritatis.
+                </p>
+            </div>
+
+            <!-- endfor -->
+            <div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+
+
+{% endblock%}
