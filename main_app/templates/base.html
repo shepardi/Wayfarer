@@ -37,10 +37,11 @@
       <!-- Navbar containter -->
       <div class="container">
         <!-- Logo -->
-        <a class="navbar-brand" href="{% url 'home' %}"><img src="../static/images/logo.png" alt=""></a>
+        <a class="navbar-brand" href="/"><img src="../static/images/logo.png" alt=""></a>
         <!-- Left Side of Navbar -->
         <div class="">
-          <ul class=" navbar-nav">
+          <ul class=" navbar-nav ml-auto">
+            {% if not user.is_authenticated %}
             <!-- Sign In -->
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Sign In</a>
@@ -49,10 +50,15 @@
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Sign Up</a>
             </li>
+            {% else %}
             <!-- Profile -->
             <li class="nav-item">
-              <a href="#" class="nav-link"></a>
+              <a href="/profile" class="nav-link">(Profiles)</a>
             </li>
+            <li class="nav-item">
+              <a href="{% url 'logout' %}" class='nav-link'>Log out</a>
+            </li>
+            {% endif %}
 
           </ul>
 
