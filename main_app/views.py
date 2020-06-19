@@ -19,29 +19,6 @@ from  .forms import Profile_Form
 ########### USER CREATION ##################
 
 def home(request):
-  if request.method== 'POST' :
-    form= UserCreationForm(request.POST)
-    if form.is_valid():
-      user=form.save()
-      login(request,user)
-      return redirect('profile')
-  else: 
-    form = UserCreationForm()
-  context = {'form': form}
-  return render(request, 'home.html', context)
-
-def profile(request):
-  posts= Post.objects.all()
-  #user= Profile.objects.get(name=request.user.username)
-  city=[]
-  for town in CURRENT_CITY:
-    city.append(town[1])
-
-  context={'posts':posts , "city" : city , "user":request.user} 
-  return render(request, 'profile.html', context)
-
-
-def test(request):
   if request.method== 'POST' :  
     form = Profile_Form(request.POST)
     if form.is_valid():
@@ -52,45 +29,35 @@ def test(request):
       new_profile.user=user
       new_profile.save()
       login(request,user)
-      return redirect('testprofile')
+      return redirect('profile')
     else:
       username=request.POST['username']
       password=request.POST['password']
       user=  authenticate(username=username,password=password)
       if user is not None:
         login(request,user)
-        return redirect('testprofile')
+        return redirect('profile')
       else:
-        return render(request, 'test.html', context)
+        return render(request, 'home.html', context)
   form = Profile_Form()
   context = {'form': form }
-  return render(request, 'test.html', context)
+  return render(request, 'home.html', context)
 
-
-
-def testprofile(request):
-  if request.method=='POST':
-    form = Profile_Form(request.POST)
-    if form.is_valid():
-      city_change=form.save(commit=False)
-      profile = Profile.objects.get(user = request.user)
-      
-      profile.current_city=form
-      profile.save()
-    else:    
-      user = User.objects.get(username = request.user.username)
-      user.first_name=request.POST['name']
-      user.save()
-    return redirect('testprofile')
+def profile(request):
+  # if request.method=='POST':
+  #   user = User.objects.get(username = request.user.username)
+  #   user.first_name=request.POST['name']
+  #   user.save()
+  #   return redirect('profile')
   form = Profile_Form()
-  posts = Profile.objects.get(user=request.user).post_set.all()
-  city= Profile.objects.get(user=request.user).current_city
-  city=FindCity(city)
+  # posts = Profile.objects.get(user=request.user).post_set.all()
+  # city= Profile.objects.get(user=request.user).current_city
+  # city=FindCity(city)
 
-  context={'user':request.user , 'posts':posts , 'city' : city ,'form' :form }
-  return render(request, 'testprofile.html', context)
+  context={'user':request.user, 'form' :form }
+  return render(request, 'profile.html', context)
 
-
+  
 
 def FindCity(city):
   if city == 'LDN':
