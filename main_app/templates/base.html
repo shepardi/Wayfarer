@@ -13,6 +13,7 @@
     crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
   <title>Welcome to Wayfarer</title>
@@ -36,10 +37,11 @@
       <!-- Navbar containter -->
       <div class="container">
         <!-- Logo -->
-        <a class="navbar-brand" href="index.html"><img src="../static/images/logo.png" alt=""></a>
+        <a class="navbar-brand" href="/"><img src="../static/images/logo.png" alt=""></a>
         <!-- Left Side of Navbar -->
         <div class="">
           <ul class=" navbar-nav ml-auto">
+            {% if not user.is_authenticated %}
             <!-- Sign In -->
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal" >Sign In</a>
@@ -48,10 +50,16 @@
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal" >Sign Up</a>
             </li>
+            {% else %}
             <!-- Profile -->
             <li class="nav-item">
-              <a href="#" class="nav-link">(Profiles)</a>
+              <a href="/profile" class="nav-link">(Profiles)</a>
             </li>
+            <li class="nav-item">
+              <a href="{% url 'logout' %}" class='nav-link'>Log out</a>
+            </li>
+            {% endif %}
+          
           </ul>
 
         </div>
@@ -70,11 +78,11 @@
   </main>
 
   <!-- Footer -->
-  <footer class="py-5 fixed-bottom">
+  <!-- <footer class="py-5 fixed-bottom">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Wayfarer 2020</p>
     </div>
-  </footer>
+  </footer> -->
 
 </body>
 
