@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<H1>BOOOOOOOOOTSTRAPPPP</H1>
 <form action="{% url 'profile' %}" method="POST">
   {% csrf_token %}
   <input type="text" placeholder={{user.first_name}} name='name'>
