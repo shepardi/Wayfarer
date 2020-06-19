@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib import auth
 
 
 #user = User.objects.create_user('myusername', 'myemail@crazymail.com', 'mypassword')
@@ -67,6 +68,20 @@ def profile(request):
 
   context={'user':request.user, 'form' :form , "posts" : posts , 'city' : city }
   return render(request, 'profile.html', context)
+
+
+
+def view_post(request , post_id):
+  post=Post.objects.get(id=post_id)
+  context={"post":post, 'city': FindCity(post.current_city)  }
+  return render(request , 'show_post.html' , context)
+
+def logout(request):
+  auth.logout(request)
+  return redirect('home')
+  
+
+
 
   
 

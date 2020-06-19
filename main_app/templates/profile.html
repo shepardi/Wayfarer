@@ -17,7 +17,7 @@
 <h1> Hello {{user.first_name}} u joined on {{user.date_joined}} you had choisen {{city}}</h1>
 <H2> UR posts</H2>
 {% for post in posts  %}
-<p> {{ post.title }} </p>
+<a href="{% url 'post' post.id %}"> {{ post.title }} </a>
 {% endfor %}
 
 {% endblock %}
