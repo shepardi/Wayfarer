@@ -15,12 +15,12 @@
 {% endfor %}
 <h1>Citys</h1>
 
-<a href="{% url 'test' 'SFO' %}">San Francisco</a>
-<a href="{% url 'test' 'LDN' %}">London</a>
-<a href="{% url 'test' 'SYD' %}">Sydney</a>
-<a href="{% url 'test' 'SEA' %}">Seattle</a>
+<a href="{% url 'test' 'San_Francisco' %}">San Francisco</a>
+<a href="{% url 'test' 'London' %}">London</a>
+<a href="{% url 'test' 'Sydney' %}">Sydney</a>
+<a href="{% url 'test' 'Seattle' %}">Seattle</a>
 <p>Creating a city form</p>
-<form action="{% url 'test' city_code %}" method="POST">
+<form action="{% url 'test' city_name %}" method="POST">
 {% csrf_token %}
 {{ form.as_p }}
 <input type="text"  value='{{city_name}}' readonly name="city">

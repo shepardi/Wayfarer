@@ -86,6 +86,7 @@ def logout(request):
   return redirect('home')
 
 def delete(request, post_id ,city_name) :
+  city_name=FindCity(city_name)
   Post.objects.get(id=post_id).delete()
   return redirect( 'test' , city_name=city_name )
   
@@ -103,6 +104,7 @@ def edit_post(request , post_id):
 
 
 def test(request , city_name):
+  city_name=RiverceCity(city_name)
   posts=Post.objects.all().order_by('-date')
   city=[]
   if request.method== 'POST':
@@ -143,7 +145,7 @@ def RiverceCity(city):
     return 'LDN'
   elif city == 'Sydney':
     return 'SYD'
-  elif city == 'San Francisco':
+  elif city == 'San Francisco' or city == 'San_Francisco':
     return 'SFO'
   elif city == 'Seattle':
     return 'SEA'
