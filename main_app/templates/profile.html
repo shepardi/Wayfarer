@@ -23,24 +23,31 @@
     <!-- Profile (Image) -->
     <div class="col-md-6">
       <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+      <p>Your City: {{city}}</p>
     </div>
 
     <!-- Profile (User Form) -->
     <div class="col-md-6">
       <!--  User First name Profile Form -->
+      <h6 class="my-3">Name</h6>
       <form action="{% url 'profile' %}" method="POST">
         {% csrf_token %}
-        <input type="text" placeholder={{user.first_name}} name='name'>
-        <input class="btn" type="submit">
+        <input type="text" placeholder={{user.first_name}} name='name' class="">
+        <input class="button" type="submit">
       </form>
 
       <!-- City name Form -->
-      <form action="{% url 'profile' %}" method="POST">
+      <form action="{% url 'profile' %}" method="POST" class="my-3">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit">
+        <input class="button" type="submit">
       </form>
     </div>
+
+
+
+
+
 
   </div>
   <!-- [END] Profile User Row -->
