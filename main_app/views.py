@@ -3,15 +3,23 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib import auth
+
+
 #user = User.objects.create_user('myusername', 'myemail@crazymail.com', 'mypassword')
 # Update fields and then save again
 #user.first_name = 'John'
 #user.last_name = 'Citizen'
 #user.save()
 # Create your views here.
+
+
 from  .models import Post, CURRENT_CITY, Profile
-from  .forms import Profile_Form
+from .forms import Profile_Form
+
+
 ########### USER CREATION ##################
+
+
 def home(request):
   err = ''
   err2 = ''
@@ -43,6 +51,8 @@ def home(request):
   form = Profile_Form()
   context = {'form': form , "err":err }
   return render(request, 'home.html', context)
+
+
 def profile(request):
   if request.method=='POST':
       user = User.objects.get(username = request.user.username)
@@ -62,13 +72,23 @@ def profile(request):
   city=FindCity(city)
   context={'user':request.user, 'form' :form , "posts" : posts , 'city' : city }
   return render(request, 'profile.html', context)
+
+# Cities Routes (Temp)
+def view_cities(request):
+  return render(request, 'cities.html')
+
+
 def view_post(request , post_id):
   post=Post.objects.get(id=post_id)
   context={"post":post, 'city': FindCity(post.current_city)  }
-  return render(request , 'show_post.html' , context)
+  return render(request, 'show_post.html', context)
+
+  
 def logout(request):
   auth.logout(request)
   return redirect('home')
+
+
 def FindCity(city):
   if city == 'LDN':
     return 'London'
@@ -78,6 +98,8 @@ def FindCity(city):
     return 'San Francisco'
   elif city == 'SEA':
     return 'Seattle'
+
+
 def RiverceCity(city):
   if city == 'London':
     return 'LDN'
