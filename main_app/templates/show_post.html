@@ -1,10 +1,79 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<!-- Page Content -->
+<div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">{{ post.title }}
+        <small>by
+            {{ post.profile.user.username }}
+            <p class="float-right">{{ city }}</p>
+        </small>
+
+    </h1>
+
+
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="{% url 'profile' %}">Profile</a>
+        </li>
+        <li class="breadcrumb-item active">{{ post.title }}</li>
+    </ol>
+
+
+    <div class="row">
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+            <hr>
+            <!-- Date/Time -->
+            <p>Posted on ...</p>
+
+            <!-- TODO - ask ivo for post date  -->
+            <hr>
+            <!-- Post Content -->
+            <p>{{ post.description }}</p>
+            <hr>
+            <a href="{% url 'delete' city_code post.id %}"> Delete</a>
+            <a href="{% url 'edit' post.id %}"> Edit</a>
+
+        </div>
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+            <h2>SideBar Item</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nobis ipsum laboriosam minima, neque
+                molestias, saepe expedita placeat nesciunt labore ratione quam corrupti necessitatibus facilis, quisquam
+                animi quos. Quae consectetur molestias excepturi dolore architecto tenetur libero vero vitae? Enim
+                eligendi optio omnis voluptatum quia quos, cumque libero possimus iure aliquam!</p>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+{% endblock%}
+
+
+<!-- Ivo Stuff -->
+<h1>{{ post.title }}</h1>
+<h1>{{ city }}</h1>
+<h1>{{ post.description }}</h1>
+<h1>{{ post.profile.user.username }}</h1>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>{{ post.title }}</h1>
     <h1>{{ city }}</h1>
@@ -15,4 +84,5 @@
     <a href="{% url 'edit' post.id %}"> Edit</a>
 
 </body>
+
 </html>

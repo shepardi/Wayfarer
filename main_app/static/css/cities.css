@@ -1,0 +1,19 @@
+:root {
+  /* Color Palette */
+  --white: #fff;
+  --dark-blue: #100935;
+  --orange: #FF9C20;
+  --pink: #F72AEE;
+  --purple: #973DFC;
+  --light-blue: #01C9FF;
+  --med-blue: #14ADFF;
+  --ocean-bue: #0071FF;
+}
+
+.maxtext{
+  width: 520px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block link %}
+<link rel="stylesheet" href="../static/css/cities.css">
+{% endblock%}
+{% block content%}
+<!-- Page Content -->
+<div class="container-fluid pt-3">
+  <div class="row">
+    <!-- City Selection Column -->
+    <div class="col-lg-4 p-4 mx-4 border city ">
+      <h2>Cities</h2>
+      <a href="{% url 'cities' 'London' %}">
+        <div class=" mb-4 d-flex border p-2 round city-tag">
+          <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+          <h3 class="my-auto float left ml-1">London</h3>
+        </div>
+      </a>
+      <a href="{% url 'cities' 'San_Francisco' %}">
+        <div class=" mb-4 d-flex border p-2 round city-tag">
+          <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+          <h3 class="my-auto float left ml-1">San Francisco</h3>
+        </div>
+      </a>
+      <a href="{% url 'cities' 'Sydney' %}">
+        <div class=" mb-4 d-flex border p-2 round city-tag">
+          <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+          <h3 class="my-auto float left ml-1">Sydney</h3>
+        </div>
+      </a>
+      <a href="{% url 'cities' 'Seattle' %}">
+        <div class=" mb-4 d-flex border p-2 round city-tag">
+          <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+          <h3 class="my-auto float left ml-1">Seattle</h3>
+        </div>
+      </a>
+    </div>
+    <!-- City Posts Column -->
+    <div class="col-md-7 border">
+      <div>
+        <!-- City Name -->
+        <div>
+          <h2>{{ city_name }}</h2>
+          <p>{{ country }}</p>
+        </div>
+        <!-- City Image -->
+        <div>
+          <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+
+          <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Close Button -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <!-- Sign In -->
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                  <form action="{% url 'cities' city_name %}" method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="text" value='{{city_name}}' readonly name="city">
+                    <input type="submit" value="Create Post">
+                  </form>
+                </div>
+                <!-- Sign Up -->
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                  <!-- Sign-Up Form -->
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">(+)</a>
+
+        </div>
+      </div>
+      <h2>Posts</h2>
+      <!-- Posts Lists -->
+      <!-- for loop start -->
+      <div class="border p-2 round mb-4">
+        <!-- Title -->
+        {% for c in city %}
+        <a href="{% url 'post' c.id %}">{{ c.title }}</a>
+        <h3>{{ c.title }}</h3>
+        <!-- Description -->
+        <p class="maxtext">{{ c.description }}</p>
+        {% endfor %}
+      </div>
+      <!-- endfor -->
+      <div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+</div>
+<!-- /.container -->
+{% endblock%}
