@@ -41,6 +41,8 @@
             <!-- Post Content -->
             <p>{{ post.description }}</p>
             <hr>
+            <a href="{% url 'delete' city_code post.id %}"> Delete</a>
+            <a href="{% url 'edit' post.id %}"> Edit</a>
 
         </div>
         <!-- Sidebar Widgets Column -->

@@ -15,6 +15,7 @@
 body{  
   font-family: 'Open Sans', sans-serif;  
 }
+
   
 .carousel-item {
   height: 65vh;
@@ -47,5 +48,17 @@ body{
   text-align: center;
 }
 
+.round{
+  border-radius:20px;
+}
 
+.city-tag{
+  background-color: var(--med-blue);
+  color:var(--dark-blue);
+}
+
+.city{
+  background-color: var(--ocean-blue);
+  color:var(--dark-blue);
+}
 

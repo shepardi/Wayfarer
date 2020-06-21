@@ -66,14 +66,13 @@
         {% endif %}
         <!-- Sign-In  Form -->
         {% if err2 %}
-        <p>  {{err2}} </p>
+        <p> {{err2}} </p>
         {% endif %}
         <form action="{% url 'home' %}" method="POST">
           {% csrf_token %}
           <input type="text" name='username' placeholder="Username">
           <input type="password" name='password' placeholder="Password">
           <input type="submit" value="login">
-
         </form>
       </div>
       <!-- Sign Up -->

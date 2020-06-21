@@ -75,8 +75,27 @@ def profile(request):
   return render(request, 'profile.html', context)
 
 # Cities Routes (Temp)
-def view_cities(request):
-  return render(request, 'cities.html')
+def view_cities(request, city_name):
+  posts=Post.objects.all().order_by('-date')
+  city=[]
+  if request.method== 'POST':
+      form=Post_Form(request.POST)
+      if form.is_valid():
+        new_post=form.save(commit=False)
+        new_post.current_city=RiverceCity(request.POST['city'])
+        profile= Profile.objects.get(user=request.user)
+        new_post.profile=profile
+        new_post.save()
+  city_name = RiverceCity(city_name)
+
+  for post in posts:
+    if post.current_city == city_name:
+      city.append(post)
+  form=Post_Form()
+  city_full_name=FindCity(city_name)
+  context={"city" : city , 'form':form , 'city_name':city_full_name , 'city_code':city_name, 'country': find_country(city_full_name)} 
+  return render(request, 'cities.html', context)
+ 
 
 
 def view_post(request , post_id):
@@ -91,7 +110,8 @@ def logout(request):
 
 def delete(request, post_id ,city_name) :
   Post.objects.get(id=post_id).delete()
-  return redirect( 'test' , city_name=city_name )
+  city_name = FindCity(city_name)
+  return redirect( 'cities', city_name=city_name )
   
 def edit_post(request , post_id):
     post=Post.objects.get(id=post_id)
@@ -105,31 +125,18 @@ def edit_post(request , post_id):
     return render(request, 'testprofile.html' , context)
 
 
+def test(request, city_name):
+  pass
 
-def test(request , city_name):
-  posts=Post.objects.all().order_by('-date')
-  city=[]
-  if request.method== 'POST':
-      form=Post_Form(request.POST)
-      if form.is_valid():
-        new_post=form.save(commit=False)
-        new_post.current_city=RiverceCity(request.POST['city'])
-        profile= Profile.objects.get(user=request.user)
-        new_post.profile=profile
-        new_post.save()
-  for post in posts:
-    if post.current_city == city_name:
-      city.append(post)
-  form=Post_Form()
-  city_full_name=FindCity(city_name)
-  context={"city" : city , 'form':form , 'city_name':city_full_name , 'city_code':city_name} 
-  
-  return render(request, 'test.html', context)
-
-
-  
-
-  
+def find_country(city):
+  if city == 'London':
+    return 'United Kingdom'
+  elif city == 'Sydney':
+    return 'Australia'
+  elif city == 'San Francisco':
+    return 'United States'
+  elif city == 'Seattle':
+    return 'United States'
 
 def FindCity(city):
   if city == 'LDN':
@@ -147,7 +154,7 @@ def RiverceCity(city):
     return 'LDN'
   elif city == 'Sydney':
     return 'SYD'
-  elif city == 'San Francisco':
+  elif city == 'San Francisco' or city == 'San_Francisco':
     return 'SFO'
   elif city == 'Seattle':
     return 'SEA'
