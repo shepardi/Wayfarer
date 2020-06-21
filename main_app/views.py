@@ -8,12 +8,10 @@ from django.core.mail import send_mail
 
 
 #user = User.objects.create_user('myusername', 'myemail@crazymail.com', 'mypassword')
-
 # Update fields and then save again
 #user.first_name = 'John'
 #user.last_name = 'Citizen'
 #user.save()
-
 # Create your views here.
 
 from  .models import Post, CURRENT_CITY, Profile, City 
@@ -21,10 +19,12 @@ from  .forms import Profile_Form ,Post_Form
 
 ########### USER CREATION ##################
 
+
 def home(request):
   err=''
   err2=''
   if request.method == 'POST' :  
+    # user = User.objects.create_user(request.POST['username'], request.POST['email'],request.POST['password'] )
     form = Profile_Form(request.POST)
     if form.is_valid():
       try:
@@ -42,7 +42,7 @@ def home(request):
     else:
       username=request.POST['username']
       password=request.POST['password']
-      user=  authenticate(username=username,password=password)
+      user= authenticate(username=username,password=password)
       if user is not None:
         login(request,user)
         return redirect('profile')
@@ -52,6 +52,7 @@ def home(request):
   form = Profile_Form()
   context = {'form': form , "err":err }
   return render(request, 'home.html', context)
+
 
 def profile(request):
   if request.method=='POST':
@@ -70,10 +71,12 @@ def profile(request):
   posts = Profile.objects.get(user=request.user).post_set.all()
   city= Profile.objects.get(user=request.user).current_city
   city=FindCity(city)
-
   context={'user':request.user, 'form' :form , "posts" : posts , 'city' : city }
   return render(request, 'profile.html', context)
 
+# Cities Routes (Temp)
+def view_cities(request):
+  return render(request, 'cities.html')
 
 
 def view_post(request , post_id):
@@ -81,6 +84,7 @@ def view_post(request , post_id):
   context={"post":post, 'city': FindCity(post.current_city) , "city_code" : post.current_city }
   return render(request , 'show_post.html' , context)
 
+  
 def logout(request):
   auth.logout(request)
   return redirect('home')
