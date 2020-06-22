@@ -8,7 +8,13 @@
   --light-blue: #01C9FF;
   --med-blue: #14ADFF;
   --ocean-bue: #0071FF;
+  --fb-white: #F0F2F5;
 }
+
+.navbar{
+  border-bottom: 1px solid var(--med-blue);
+}
+
 
 .maxtext{
   width: 520px;
@@ -17,3 +23,24 @@
   text-overflow: ellipsis;
 }
 
+.round {
+  border-radius: 20px;
+  color: var(--white);
+  background-color: var(--dark-blue);
+}
+
+.container-fluid{
+  background-color: var(--dark-blue);
+}
+
+h2, p {
+  color: var(--white);
+}
+
+.line{
+  color: var(--white);
+}
+
+.border1 {
+  border: 1px solid var(--med-blue);
+}

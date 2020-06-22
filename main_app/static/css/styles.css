@@ -10,10 +10,11 @@
   --light-blue: #01C9FF;
   --med-blue: #14ADFF;
   --ocean-bue: #0071FF;
+  --fb-white: #F0F2F5;
 }
 
 body{  
-  font-family: 'Montserrat', sans-serif;  
+  font-family: 'Montserrat', sans-serif; 
 }
   
 .carousel-item {
@@ -33,6 +34,7 @@ body{
 .navbar{
   height: 12.5vh;
   background-color: var(--dark-blue);
+  
 }
 
 .navbar a{
@@ -47,13 +49,9 @@ body{
   text-align: center;
 }
 
-.round{
-  border-radius:20px;
-}
-
 .city-tag{
   background-color: var(--med-blue);
-  color:var(--dark-blue);
+  color:var(--white);
 }
 
 .city{
