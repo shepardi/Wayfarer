@@ -44,3 +44,24 @@ h2, p {
 .border1 {
   border: 1px solid var(--med-blue);
 }
+
+.btn-white{
+  color: var(--white)
+}
+
+.btn-white:hover{
+  color: var(--orange);
+}
+
+.post-card {
+  color: var(--white);
+  text-decoration: none !important;
+}
+
+.post-card:hover{
+  color: var(--orange);
+}
+
+.city-btn{
+  text-decoration: none !important;
+}
