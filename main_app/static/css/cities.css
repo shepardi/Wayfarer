@@ -75,3 +75,7 @@ text-decoration: none !important;
 .posts{
   background-color: var(--fb-white);
 }
+
+.current{
+  border: 1px solid var(--orange);
+}

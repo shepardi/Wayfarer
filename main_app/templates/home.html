@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block link %}
+<script defer src="{% static 'scripts/home.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 {% block content %}
+
+
 
 <!-- ----------------------------- Slide Show View ----------------------------- -->
 <section>
@@ -57,10 +63,10 @@
         <span aria-hidden="true">&times;</span>
       </button>
       <!-- Sign In -->
-      <div class="modal-header">
+      <div id="form-sign-in" class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Sign In</h5>
       </div>
-      <div class="modal-body">
+      <div id="form-sign-in2" class="modal-body ">
         {% if err2 %}
         <p>{{ err2 }}</p>
         {% endif %}
@@ -76,10 +82,10 @@
         </form>
       </div>
       <!-- Sign Up -->
-      <div class="modal-header">
+      <div id="form-sign-up" class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Sign Up</h5>
       </div>
-      <div class="modal-body">
+      <div id="form-sign-up2" class="modal-body">
         <!-- Sign-Up Form -->
         <form action="{% url 'home' %}" method="POST">
           {% if err %}
