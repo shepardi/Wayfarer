@@ -6,23 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <h1> Hello {{user.first_name}} u joined on {{user.date_joined}} you had choisen {{city}}</h1>
-    <form action="{% url 'testprofile' %}" method="post">
-        {% csrf_token %}
-        <input type="text" placeholder={{user.first_name}} name='name'>
-        <input type="submit" >
-    </form>
-    <h3>chance city</h3>
-    <form action="{% url 'testprofile' %}" method="post">
+    <form action="{% url 'edit' post_id %}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" >
+        <input type="submit">
     </form>
     
-    <H2> UR posts</H2>
-    {% for post in posts  %}
-       <p> {{ post.title }} </p>
-    {% endfor %}
 </body>
 </html>

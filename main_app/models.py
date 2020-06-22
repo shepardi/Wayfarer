@@ -23,9 +23,12 @@ class Post(models.Model):
   current_city = models.CharField(max_length=3, choices=CURRENT_CITY, default=CURRENT_CITY[0][0])
   description = models.TextField(max_length=1000)
   profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+  date = models.DateTimeField( auto_now_add=True )
   
   def __str__(self):
     return self.title 
+
 
 class City(models.Model):
   post = models.ForeignKey(Post, on_delete=models.CASCADE)
