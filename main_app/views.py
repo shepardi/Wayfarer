@@ -35,7 +35,7 @@ def home(request):
         new_profile.user=user
         new_profile.save()
         login(request,user)
-        send_mail('Welcome to Wayfair!','Hello ','wwayfair82@gmail.com',[request.POST['email']],fail_silently=False )
+        send_mail('Welcome to Wayfarer!','Thank you for registering to Wayfarer!','wwayfair82@gmail.com',[request.POST['email']],fail_silently=False )
         return redirect('profile')
       except:
         err="ALREADY MADE THIS PROFILE"

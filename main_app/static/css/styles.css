@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
   /* Color Palette */
@@ -13,9 +13,8 @@
 }
 
 body{  
-  font-family: 'Open Sans', sans-serif;  
+  font-family: 'Montserrat', sans-serif;  
 }
-
   
 .carousel-item {
   height: 65vh;
