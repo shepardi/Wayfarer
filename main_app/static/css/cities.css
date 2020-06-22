@@ -11,6 +11,11 @@
   --fb-white: #F0F2F5;
 }
 
+body{
+  background-color: var(--dark-blue);
+  max-height: 100vh;
+}
+
 .navbar{
   border-bottom: 1px solid var(--med-blue);
 }
@@ -21,6 +26,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--dark-blue);
 }
 
 .round {
@@ -54,8 +60,8 @@ h2, p {
 }
 
 .post-card {
-  color: var(--white);
-  text-decoration: none !important;
+color: var(--dark-blue);
+text-decoration: none !important;
 }
 
 .post-card:hover{
@@ -64,4 +70,8 @@ h2, p {
 
 .city-btn{
   text-decoration: none !important;
+}
+
+.posts{
+  background-color: var(--fb-white);
 }

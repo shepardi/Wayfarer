@@ -86,14 +86,15 @@
       </div>
       <!-- Posts Lists -->
       <!-- for loop start -->
-      <div class="border p-2 round mb-4">
+      <div class=" p-2 round mb-4">
         <!-- Title -->
         {% for c in city %}
-        <a class="post-card" href="{% url 'post' c.id %}">
-          <h3>{{ c.title }}</h3>
-        </a>
-        <p class="maxtext">{{ c.description }}</p>
-        <hr class="line">
+        <div class="posts border p-2 round mb-4">
+          <a class="post-card" href="{% url 'post' c.id %}">
+            <h3>{{ c.title }}</h3>
+          </a>
+          <p class="maxtext">{{ c.description }}</p>
+        </div>
         {% endfor %}
       </div>
       <!-- endfor -->
