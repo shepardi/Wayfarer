@@ -24,7 +24,11 @@
 
     <!-- Profile (Image) -->
     <div class="col-md-6">
+      {% if img %}
       <img class="img-fluid" src="{{ img.url }}" alt="">
+      {% else%}
+      <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Domestic_Cat_Face_Shot.jpg/800px-Domestic_Cat_Face_Shot.jpg" alt="">
+      {% endif %}
       <form action="{% url 'img_upload' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" name="img">
