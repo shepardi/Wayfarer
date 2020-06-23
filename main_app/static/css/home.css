@@ -11,6 +11,15 @@
   --fb-white: #F0F2F5;
 }
 
+body{
+  background-color: var(--dark-blue);
+  max-height: 100vh;
+  color: var(--white);
+}
+
+.navbar{
+  border-bottom: 1px solid var(--orange);
+}
 
 .hidden{
 display: none;
@@ -60,8 +69,8 @@ input[type=email] {
 input[type=submit] {
   border: none;
   width: 150px;
-  background: var(--dark-blue);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--dark-blue);
   font-size: 1rem;
   line-height: 1.5rem;
   padding: 10px 0;
@@ -75,10 +84,16 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: var(--orange);
-  opacity: 0.8;
+  color: var(--white);
 }
 
 ::placeholder{
   color: aliceblue;
-  opacity: 0.8;
+  opacity: 0.7;
 } 
+
+.card, .card-header {
+  background-color: var(--dark-blue);
+  border: 1px solid var(--fb-white);
+}
+
