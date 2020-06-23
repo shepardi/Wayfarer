@@ -30,10 +30,21 @@
 
     <!-- Profile (Image) -->
     <div class="col-md-6">
+
       <img class="img-fluid" src="../static/images/photo3.jpg" alt="">
       <p>
         Your City: <span class="orange">{{city}}</span>
       </p>
+
+      <img class="img-fluid" src="{{ img.url }}" alt="">
+      <p>{{ img.url }}</p>
+      <form action="{% url 'profile' %}" method="POST">
+        {% csrf_token %}
+        <input type="file" src="" alt="" name='img'>
+        <input class="button" type="submit">
+      </form>
+      <p>Your City: {{city}}</p>
+
     </div>
 
     <!-- Profile (User Form) -->
