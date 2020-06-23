@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<script defer src="{% static 'scripts/app.js' %}"></script>
 
-<!-- TODO place join date on top right  -->
-
+{% endblock%}
 {% block content %}
 <!-- Page Content -->
 <div class="container">
 
   <!-- Page Title ( Profile: user ) -->
   <h1 class="mt-4 mb-3">Profile:
-    <small>{{user.first_name}}</small>
+    <small><span class="orange">{{user.first_name}}</span></small>
+    <small class="float-right">Joined on: <span class="orange">{{ user.date_joined }}</span>
+    </small>
+
   </h1>
 
   <!-- Breadcrumb Profile Page -->
@@ -24,8 +30,10 @@
 
     <!-- Profile (Image) -->
     <div class="col-md-6">
-      <img class="img-fluid" src="http://placehold.it/750x500" alt="">
-      <p>Your City: {{city}}</p>
+      <img class="img-fluid" src="../static/images/photo3.jpg" alt="">
+      <p>
+        Your City: <span class="orange">{{city}}</span>
+      </p>
     </div>
 
     <!-- Profile (User Form) -->
@@ -55,7 +63,7 @@
   <!-- [END] Profile User Row -->
 
   <!-- Related Posts Row-->
-  <h3 class="my-4">{{user.first_name}} Recent Posts</h3>
+  <h3 class="my-4">{{user.first_name}}'s Recent Posts:</h3>
 
   <div class="row">
 

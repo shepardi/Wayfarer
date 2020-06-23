@@ -36,11 +36,11 @@ def home(request):
                 new_profile.user = user
                 new_profile.save()
                 login(request, user)
-                send_mail('Welcome to Wayfair!', 'Hello ', 'wwayfair82@gmail.com',
+                send_mail('Welcome to Wayfair!', 'Hello', 'wwayfair82@gmail.com',
                           [request.POST['email']], fail_silently=False)
                 return redirect('profile')
             except:
-                err = "ALREADY MADE THIS PROFILE"
+                err = "This profile already exists!"
         else:
             username = request.POST['username']
             password = request.POST['password']
@@ -49,7 +49,7 @@ def home(request):
                 login(request, user)
                 return redirect('profile')
             else:
-                context = {'form': form, "err2": "Wrong username or Pass"}
+                context = {'form': form, "err2": "Wrong Username or Password"}
                 return render(request, 'home.html', context)
     form = Profile_Form()
     context = {'form': form, "err": err}

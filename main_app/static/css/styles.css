@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
-  /* Color Palette */
-  --white: #fff;
+/* Color Palette */
+--white: #fff;
   --dark-blue: #100935;
   --orange: #FF9C20;
   --pink: #F72AEE;
@@ -16,7 +16,11 @@
 body{  
   font-family: 'Montserrat', sans-serif; 
 }
-  
+
+a {
+  text-decoration: none;
+}
+
 .carousel-item {
   height: 65vh;
   min-height: 300px;
@@ -34,11 +38,11 @@ body{
 .navbar{
   height: 12.5vh;
   background-color: var(--dark-blue);
-
 }
 
 .navbar a{
   color: var(--white);
+  
 }
 
 .navbar a:hover{
@@ -57,4 +61,8 @@ body{
 .city{
   background-color: var(--ocean-blue);
   color:var(--dark-blue);
+}
+
+.orange{
+  color: var(--purple);
 }
