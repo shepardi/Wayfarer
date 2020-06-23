@@ -9,23 +9,17 @@
 
 <body>
 
-    <h1>POSTS</h1>
-{% for c in city %}
-<a href="{% url 'post' c.id %}">{{c.title }}</a> 
-{% endfor %}
-<h1>Citys</h1>
 
-<a href="{% url 'test' 'SFO' %}">San Francisco</a>
-<a href="{% url 'test' 'LDN' %}">London</a>
-<a href="{% url 'test' 'SYD' %}">Sydney</a>
-<a href="{% url 'test' 'SEA' %}">Seattle</a>
-<p>Creating a city form</p>
-<form action="{% url 'test' city_code %}" method="POST">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="text"  value='{{city_name}}' readonly name="city">
-<input type="submit">
-</form>
+    <div class="sign-in">
+        <form class="login-form" action="/login" method="post">
+            <h2 style="color: white;">Log In</h2>
+            <input type="text" name="username" placeholder="Username" autocomplete="off" required>
+            <input type="password" name="password" placeholder="Password" autocomplete="off" required>
+            <input type="submit" value="Log In">
+        </form>
+    </div>
+
+
 </body>
 
 </html>

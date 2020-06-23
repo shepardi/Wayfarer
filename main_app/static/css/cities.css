@@ -8,12 +8,74 @@
   --light-blue: #01C9FF;
   --med-blue: #14ADFF;
   --ocean-bue: #0071FF;
+  --fb-white: #F0F2F5;
 }
+
+body{
+  background-color: var(--dark-blue);
+  max-height: 100vh;
+}
+
+.navbar{
+  border-bottom: 1px solid var(--med-blue);
+}
+
 
 .maxtext{
   width: 520px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--dark-blue);
 }
 
+.round {
+  border-radius: 20px;
+  color: var(--white);
+  background-color: var(--dark-blue);
+}
+
+.container-fluid{
+  background-color: var(--dark-blue);
+}
+
+h2, p {
+  color: var(--white);
+}
+
+.line{
+  color: var(--white);
+}
+
+.border1 {
+  border: 1px solid var(--med-blue);
+}
+
+.btn-white{
+  color: var(--white)
+}
+
+.btn-white:hover{
+  color: var(--orange);
+}
+
+.post-card {
+color: var(--dark-blue);
+text-decoration: none !important;
+}
+
+.post-card:hover{
+  color: var(--orange);
+}
+
+.city-btn{
+  text-decoration: none !important;
+}
+
+.posts{
+  background-color: var(--fb-white);
+}
+
+.current{
+  border: 1px solid var(--orange);
+}
