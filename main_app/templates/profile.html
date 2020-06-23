@@ -10,10 +10,10 @@
 <div class="container">
 
   <!-- Page Title ( Profile: user ) -->
-  <h1 class="mt-4 mb-3">Profile:
-    <small><span class="orange">{{user.first_name}}</span></small>
-    <small class="float-right">Joined on: <span class="orange">{{ user.date_joined }}</span>
-    </small>
+  <h1 class="mt-4 mb-3">
+    <small>{{user.first_name}}</small>
+    <p class="joined-date float-right pt-3">Joined on: <span class="orange">{{ user.date_joined }}</span>
+    </p>
 
   </h1>
 
@@ -43,14 +43,14 @@
       <form action="{% url 'profile' %}" method="POST">
         {% csrf_token %}
         <input type="text" placeholder={{user.first_name}} name='name' class="">
-        <input class="button" type="submit">
+        <input type="submit" value="Submit">
       </form>
 
       <!-- City name Form -->
       <form action="{% url 'profile' %}" method="POST" class="my-3">
         {% csrf_token %}
         {{ form.as_p }}
-        <input class="button" type="submit">
+        <input type="submit" value="Submit">
       </form>
     </div>
 

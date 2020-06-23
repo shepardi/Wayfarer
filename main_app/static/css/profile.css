@@ -12,9 +12,9 @@
 }
 
 body{
-  background-color: var(--dark-blue);
+  background-color: var(--fb-white);
   max-height: 100vh;
-  color: var(--white);
+  color: var(--dark-blue);
 }
 
 .navbar{
@@ -25,3 +25,24 @@ body{
   display: none;
 }
 
+.joined-date{
+  font-size: 20px;
+}
+
+/* input[type=submit] {
+  border: none;
+  width: 100px;
+  background-color: var(--white);
+  color: var(--dark-blue);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 10px 0;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+input[type=submit]:hover {
+  background-color: var(--orange);
+  color: var(--white);
+}
+ */
