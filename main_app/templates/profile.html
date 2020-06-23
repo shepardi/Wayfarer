@@ -25,10 +25,9 @@
     <!-- Profile (Image) -->
     <div class="col-md-6">
       <img class="img-fluid" src="{{ img.url }}" alt="">
-      <p>{{ img.url }}</p>
-      <form action="{% url 'profile' %}" method="POST">
+      <form action="{% url 'img_upload' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="file" src="" alt="" name='img'>
+        <input type="file" name="img">
         <input class="button" type="submit">
       </form>
       <p>Your City: {{city}}</p>

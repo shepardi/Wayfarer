@@ -5,14 +5,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.core.mail import send_mail
+from django.core.files.storage import FileSystemStorage  
 
-
-#user = User.objects.create_user('myusername', 'myemail@crazymail.com', 'mypassword')
-# Update fields and then save again
-#user.first_name = 'John'
-#user.last_name = 'Citizen'
-# user.save()
-# Create your views here.
+###### our Imports #333
 
 from .models import Post, CURRENT_CITY, Profile, City
 from .forms import Profile_Form, Post_Form
@@ -56,9 +51,13 @@ def home(request):
     return render(request, 'home.html', context)
 
 
+######## PROFILE PAGE ############
+
+
 def profile(request):
     profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':
+        print(request.FILES)
         user = User.objects.get(username=request.user.username)
         profile = Profile.objects.get(user=request.user)
         form = Profile_Form(request.POST)
@@ -68,12 +67,8 @@ def profile(request):
             profile.current_city = new_form.current_city
             profile.save()
         else:
-            try:
-                user.first_name = request.POST['name']
-                user.save()
-            except:
-                profile.img=request.POST['img']
-                profile.save()
+            user.first_name = request.POST['name']
+            user.save()           
         return redirect('profile')
     form = Profile_Form()
     posts = Profile.objects.get(user=request.user).post_set.all()
@@ -84,6 +79,9 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 # Cities Routes (Temp)
+
+
+#######  Vewing ALL the Citys ######
 
 
 @login_required
@@ -109,6 +107,17 @@ def view_cities(request, city_name):
                'city_code': city_name, 'country': find_country(city_full_name)}
     return render(request, 'cities.html', context)
 
+def img_upload(request):
+    profile = Profile.objects.get(user=request.user)
+    fs = FileSystemStorage()
+    img_file=request.FILES['img']
+    fs.save(img_file.name,img_file)
+    profile.img=request.FILES['img']
+    profile.save()
+    return redirect('profile')
+
+
+#### VIEWING a SPECIFIC POST ######
 
 def view_post(request, post_id):
     post = Post.objects.get(id=post_id)
@@ -117,10 +126,14 @@ def view_post(request, post_id):
     return render(request, 'show_post.html', context)
 
 
+##### LOGING OUT #####
+
 def logout(request):
     auth.logout(request)
     return redirect('home')
 
+
+##### DELETE  A POST ########
 
 @login_required
 def delete(request, post_id, city_name):
@@ -133,6 +146,7 @@ def delete(request, post_id, city_name):
     # else TODO: 404 page
     return redirect('home')
 
+##### EDIT A POST #######
 
 @login_required
 def edit_post(request, post_id):
@@ -152,9 +166,12 @@ def edit_post(request, post_id):
     return render(request, 'testprofile.html', context)
 
 
+
 def test(request, city_name):
     pass
 
+
+####### Custom functions ######
 
 def find_country(city):
     if city == 'London':
