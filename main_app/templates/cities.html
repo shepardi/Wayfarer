@@ -9,6 +9,7 @@
 <!-- Page Content -->
 
 <div class="container-fluid pt-3">
+<<<<<<< HEAD
     <div class="row">
         <!-- City Selection Column -->
         <div class="col-lg-4 p-4 mx-4 city ">
@@ -37,8 +38,37 @@
                     <h3 class="my-auto float left ml-1">Seattle</h3>
                 </div>
             </a>
+=======
+  <div class="row">
+    <!-- City Selection Column -->
+    <div class="col-lg-4 p-4 mx-4 city ">
+      <h2>Cities:</h2>
+      <a class="city-btn" href="{% url 'cities' 'London' %}">
+        <div id="london" class="mb-4 d-flex p-2 round city-tag border1">
+          <img src="../static/images/bigben.jpg" alt="" height="135vh" width="135vh" class="border">
+          <h3 class="my-auto float left ml-1">London</h3>
+        </div>
+      </a>
+      <a class="city-btn" href="{% url 'cities' 'San_Francisco' %}">
+        <div id="sanfrancisco" class=" mb-4 d-flex p-2 round city-tag border1">
+          <img src="../static/images/goldengate.jpg" alt="" height="135vh" width="135vh" class="border">
+          <h3 class="my-auto float left ml-1">San Francisco</h3>
+        </div>
+      </a>
+      <a class="city-btn" href="{% url 'cities' 'Sydney' %}">
+        <div id="sydney" class=" mb-4 d-flex  p-2 round city-tag border1">
+          <img src="../static/images/syd-beach.jpg" alt="" height="135vh" width="135vh" class="border">
+          <h3 class="my-auto float left ml-1">Sydney</h3>
+        </div>
+      </a>
+      <a class="city-btn" href="{% url 'cities' 'Seattle' %}">
+        <div id="seattle" class=" mb-4 d-flex p-2 round city-tag border1">
+          <img src="../static/images/spaceneedle.jpg" alt="" height="135vh" width="135vh" class="border">
+          <h3 class="my-auto float left ml-1">Seattle</h3>
+>>>>>>> submaster
         </div>
 
+<<<<<<< HEAD
         <!-- City Posts Column -->
         <div class="col-md-7">
             <div>
@@ -50,6 +80,19 @@
                 <!-- City Image -->
                 <div>
                     <img src="http://placehold.it/100x100" alt="" height="135vh" width="135vh" class="border">
+=======
+    <!-- City Posts Column -->
+    <div class="col-md-7">
+      <div>
+        <!-- City Name -->
+        <div class="pt-4">
+          <h2>{{ city_name }}</h2>
+          <p>{{ country }}</p>
+        </div>
+        <!-- City Image -->
+        <div>
+          <img id="main-pic" src="http://placehold.it/100x100" alt="" height="200vh" width="250vh" class="border">
+>>>>>>> submaster
 
 
                     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog"

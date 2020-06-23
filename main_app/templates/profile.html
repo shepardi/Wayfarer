@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<script defer src="{% static 'scripts/app.js' %}"></script>
 
-<!-- TODO place join date on top right  -->
-
+{% endblock%}
 {% block content %}
 <!-- Page Content -->
 <div class="container">
 
   <!-- Page Title ( Profile: user ) -->
-  <h1 class="mt-4 mb-3">Profile:
+  <h1 class="mt-4 mb-3">
     <small>{{user.first_name}}</small>
+    <p class="joined-date float-right pt-3">Joined on: <span class="orange">{{ user.date_joined }}</span>
+    </p>
+
   </h1>
 
   <!-- Breadcrumb Profile Page -->
@@ -24,8 +30,21 @@
 
     <!-- Profile (Image) -->
     <div class="col-md-6">
-      <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+
+      <img class="img-fluid" src="../static/images/photo3.jpg" alt="">
+      <p>
+        Your City: <span class="orange">{{city}}</span>
+      </p>
+
+      <img class="img-fluid" src="{{ img.url }}" alt="">
+      <p>{{ img.url }}</p>
+      <form action="{% url 'profile' %}" method="POST">
+        {% csrf_token %}
+        <input type="file" src="" alt="" name='img'>
+        <input class="button" type="submit">
+      </form>
       <p>Your City: {{city}}</p>
+
     </div>
 
     <!-- Profile (User Form) -->
@@ -35,14 +54,14 @@
       <form action="{% url 'profile' %}" method="POST">
         {% csrf_token %}
         <input type="text" placeholder={{user.first_name}} name='name' class="">
-        <input class="button" type="submit">
+        <input type="submit" value="Submit">
       </form>
 
       <!-- City name Form -->
       <form action="{% url 'profile' %}" method="POST" class="my-3">
         {% csrf_token %}
         {{ form.as_p }}
-        <input class="button" type="submit">
+        <input type="submit" value="Submit">
       </form>
     </div>
 
@@ -55,7 +74,7 @@
   <!-- [END] Profile User Row -->
 
   <!-- Related Posts Row-->
-  <h3 class="my-4">{{user.first_name}} Recent Posts</h3>
+  <h3 class="my-4">{{user.first_name}}'s Recent Posts:</h3>
 
   <div class="row">
 

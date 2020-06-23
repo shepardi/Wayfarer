@@ -1,16 +1,28 @@
 let orange = $('#city-name');
+let mainPic = $('#main-pic');
 
 if (orange.val() == 'London') {
-  $('#london').addClass("current")
+  $('#london').addClass("current");
+  mainPic.attr('src', '../static/images/bigben.jpg');
 };
+
 if (orange.val() == 'San Francisco') {
-  $('#sanfrancisco').addClass("current")
+  $('#sanfrancisco').addClass("current");
+  mainPic.attr('src', '../static/images/goldengate.jpg');
 };
+
 if (orange.val() == 'Sydney') {
-  $('#sydney').addClass("current")
+  $('#sydney').addClass("current");
+  mainPic.attr('src', '../static/images/syd-beach.jpg');
 };
+
 if (orange.val() == 'Seattle') {
-  $('#seattle').addClass("current")
+  $('#seattle').addClass("current");
+  mainPic.attr('src', '../static/images/spaceneedle.jpg');
 };
+
+
+
+
 
 

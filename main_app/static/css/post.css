@@ -1,0 +1,26 @@
+:root {
+  /* Color Palette */
+  --white: #fff;
+  --dark-blue: #100935;
+  --orange: #FF9C20;
+  --pink: #F72AEE;
+  --purple: #973DFC;
+  --light-blue: #01C9FF;
+  --med-blue: #14ADFF;
+  --ocean-bue: #0071FF;
+  --fb-white: #F0F2F5;
+}
+
+body{
+  background-color: var(--dark-blue);
+  max-height: 100vh;
+  color: var(--white);
+}
+
+.navbar{
+  border-bottom: 1px solid var(--med-blue);
+}
+
+.breadcrumb {
+  display: none;
+}

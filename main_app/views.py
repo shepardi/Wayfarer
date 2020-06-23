@@ -36,11 +36,11 @@ def home(request):
                 new_profile.user = user
                 new_profile.save()
                 login(request, user)
-                send_mail('Welcome to Wayfair!', 'Hello ', 'wwayfair82@gmail.com',
+                send_mail('Welcome to Wayfair!', 'Hello', 'wwayfair82@gmail.com',
                           [request.POST['email']], fail_silently=False)
                 return redirect('profile')
             except:
-                err = "ALREADY MADE THIS PROFILE"
+                err = "This profile already exists!"
         else:
             username = request.POST['username']
             password = request.POST['password']
@@ -49,7 +49,7 @@ def home(request):
                 login(request, user)
                 return redirect('profile')
             else:
-                context = {'form': form, "err2": "Wrong username or Pass"}
+                context = {'form': form, "err2": "Wrong Username or Password"}
                 return render(request, 'home.html', context)
     form = Profile_Form()
     context = {'form': form, "err": err}
@@ -57,8 +57,10 @@ def home(request):
 
 
 def profile(request):
+    profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':
         user = User.objects.get(username=request.user.username)
+        profile = Profile.objects.get(user=request.user)
         form = Profile_Form(request.POST)
         if form.is_valid():
             new_form = form.save(commit=False)
@@ -66,15 +68,19 @@ def profile(request):
             profile.current_city = new_form.current_city
             profile.save()
         else:
-            user.first_name = request.POST['name']
-            user.save()
+            try:
+                user.first_name = request.POST['name']
+                user.save()
+            except:
+                profile.img=request.POST['img']
+                profile.save()
         return redirect('profile')
     form = Profile_Form()
     posts = Profile.objects.get(user=request.user).post_set.all()
-    city = Profile.objects.get(user=request.user).current_city
-    city = FindCity(city)
+    img= profile.img
+    city = FindCity(profile.current_city)
     context = {'user': request.user, 'form': form,
-               "posts": posts, 'city': city}
+               "posts": posts, 'city': city , 'img' : img}
     return render(request, 'profile.html', context)
 
 # Cities Routes (Temp)

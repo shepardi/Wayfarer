@@ -1,0 +1,48 @@
+:root {
+  /* Color Palette */
+  --white: #fff;
+  --dark-blue: #100935;
+  --orange: #FF9C20;
+  --pink: #F72AEE;
+  --purple: #973DFC;
+  --light-blue: #01C9FF;
+  --med-blue: #14ADFF;
+  --ocean-bue: #0071FF;
+  --fb-white: #F0F2F5;
+}
+
+body{
+  background-color: var(--fb-white);
+  max-height: 100vh;
+  color: var(--dark-blue);
+}
+
+.navbar{
+  border-bottom: 1px solid var(--med-blue);
+}
+
+.breadcrumb {
+  display: none;
+}
+
+.joined-date{
+  font-size: 20px;
+}
+
+/* input[type=submit] {
+  border: none;
+  width: 100px;
+  background-color: var(--white);
+  color: var(--dark-blue);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 10px 0;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+input[type=submit]:hover {
+  background-color: var(--orange);
+  color: var(--white);
+}
+ */
