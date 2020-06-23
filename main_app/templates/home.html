@@ -50,7 +50,7 @@
 <!-- ----------------------------- Modal Login Form ----------------------------- -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog rounded-cirlce">
     <div class="modal-content">
       <!-- Close Button -->
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -61,16 +61,18 @@
         <h5 class="modal-title" id="staticBackdropLabel">Sign In</h5>
       </div>
       <div class="modal-body">
+        {% if err2 %}
+        <p>{{ err2 }}</p>
+        {% endif %}
         <!-- Sign-In  Form -->
         {% if err2 %}
-        <p>  {{err2}} </p>
+        <p> {{err2}} </p>
         {% endif %}
         <form action="{% url 'home' %}" method="POST">
           {% csrf_token %}
-          <input type="text" name='username' placeholder="username">
-          <input type="password" name='password' placeholder="pasword">
+          <input type="text" name='username' placeholder="Username">
+          <input type="password" name='password' placeholder="Password">
           <input type="submit" value="login">
-
         </form>
       </div>
       <!-- Sign Up -->
@@ -81,14 +83,14 @@
         <!-- Sign-Up Form -->
         <form action="{% url 'home' %}" method="POST">
           {% if err %}
-          <p>  {{err}} </p>
+          <p> {{err}} </p>
           {% endif %}
           {% csrf_token %}
           {{ form.as_p }}
-          <input type="text" name='name' placeholder="name">
-          <input type="text" name='username' placeholder="username">
-          <input type="password" name='password' placeholder="pasword">
-          <input type="email" name='email' placeholder="email">
+          <input type="text" name='name' placeholder="Name">
+          <input type="text" name='username' placeholder="Username">
+          <input type="password" name='password' placeholder="Password">
+          <input type="email" name='email' placeholder="Email">
           <input type="submit" value="go">
         </form>
       </div>
@@ -97,17 +99,9 @@
   </div>
 </div>
 
-
-
-
-
 <!-- Page Content -->
 <div class="container">
-
   <h1 class="my-4">Wayfarer Is...</h1>
-
-
-  <!-- ----------------------------- Market Icons Section ----------------------------- -->
   <div class="row">
     <div class="col-lg-4 mb-4">
       <div class="card h-100">
@@ -143,6 +137,8 @@
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Waferer is .... -->
-  {% endblock %}
+
+<!-- Waferer is .... -->
+{% endblock %}
