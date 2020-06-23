@@ -47,7 +47,7 @@ def home(request):
         login(request,user)
         return redirect('profile')
       else:
-        context = {'form': form , "err2":"Wrong username or Pass" }
+        context = {'form': form , "err2":"Wrong username or Password" }
         return render(request, 'home.html', context)
   form = Profile_Form()
   context = {'form': form , "err":err }

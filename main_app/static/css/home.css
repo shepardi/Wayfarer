@@ -11,23 +11,32 @@
   --fb-white: #F0F2F5;
 }
 
+
 .hidden{
 display: none;
 }
 
 #container{
-  background-color: var(--light-blue);
+  background-color: var(--dark-blue);
   display: flex;
   text-align: center;
   align-items: center;
-  height: 500px;
+  height: 450px;
   border-radius: 15px;
+  color: var(--white);
+  opacity: 90%;
 }
+
 
 .close-modal{
   position: relative;
   top: 10px;
   left: 210px;
+  color: var(--white);
+}
+
+.errorlist{
+  display: none;
 }
 
 input[type=text],
@@ -44,7 +53,7 @@ input[type=email] {
   transition: border 0.5s;
   outline: none;
   line-height: 1.7rem;
-  color: var(--dark-blue);
+  color: var(--white);
 }
 
 
@@ -62,6 +71,11 @@ input[type=submit] {
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
+}
+
+input[type=submit]:hover {
+  background-color: var(--orange);
+  opacity: 0.8;
 }
 
 ::placeholder{

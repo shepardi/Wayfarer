@@ -57,15 +57,16 @@
               <a id="btn-sign-up" class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">REGISTER</a>
             </li>
             {% else %}
+
             <!-- Profile -->
-            <li class="nav-item">
-              <a href="{% url 'cities' 'London' %}" class="nav-link">CITIES</a>
-            </li>
             <li class="nav-item">
               <a href="/profile" class="nav-link">USERNAME</a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'logout' %}" class='nav-link'>LOG OUT</a>
+              <a href="{% url 'cities' 'London' %}" class="nav-link">CITIES</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'logout' %}" class='nav-link'>LOGOUT</a>
             </li>
             {% endif %}
 

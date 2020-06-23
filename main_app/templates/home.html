@@ -60,13 +60,13 @@
     <div id="container" class="modal-content">
       <!-- Close Button -->
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span class="close-modal" aria-hidden="true">&times;</span>
+        <!-- <span class="close-modal" aria-hidden="true">&times;</span> -->
       </button>
       <!-- Sign In -->
 
       <div id="form-sign-in2" class="modal-body ">
-        <div id="form-sign-in" class="modal-header">
-          <h3 class="modal-title">Sign In</h3>
+        <div id="form-sign-in" class="">
+          <h3 class="modal-title mb-2">Sign In</h3>
         </div>
         {% if err2 %}
         <p>{{ err2 }}</p>
@@ -81,8 +81,8 @@
       </div>
       <!-- Sign Up -->
       <div id="form-sign-up2" class="modal-body">
-        <div id="form-sign-up" class="modal-header">
-          <h3 class="modal-title" id="staticBackdropLabel">Sign Up</h3>
+        <div id="form-sign-up" class="">
+          <h3 class="modal-title mb-2" id="staticBackdropLabel">Sign Up</h3>
         </div>
         <!-- Sign-Up Form -->
         <form class="signup-form" action="{% url 'home' %}" method="POST">
