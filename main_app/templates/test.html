@@ -10,19 +10,6 @@
 <body>
 
 
-<<<<<<< HEAD
-<a href="{% url 'test' 'San_Francisco' %}">San Francisco</a>
-<a href="{% url 'test' 'London' %}">London</a>
-<a href="{% url 'test' 'Sydney' %}">Sydney</a>
-<a href="{% url 'test' 'Seattle' %}">Seattle</a>
-<p>Creating a city form</p>
-<form action="{% url 'test' city_name %}" method="POST">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="text"  value='{{city_name}}' readonly name="city">
-<input type="submit">
-</form>
-=======
     <div class="sign-in">
         <form class="login-form" action="/login" method="post">
             <h2 style="color: white;">Log In</h2>
@@ -33,7 +20,6 @@
     </div>
 
 
->>>>>>> 77dbbeac2f50b4b5f7f07ff63418b5d5d3ef1a44
 </body>
 
 </html>

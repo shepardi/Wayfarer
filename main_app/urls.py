@@ -1,4 +1,12 @@
+# Django Confings
+
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+# Our Imports 
+
 from . import views
 
 urlpatterns = [
@@ -10,6 +18,5 @@ urlpatterns = [
     path('test/<str:city_name>', views.test, name='test'),
     path('edit/<int:post_id>', views.edit_post, name='edit'),
     path('test/<str:city_name>/delete/<int:post_id>', views.delete, name='delete')
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# test/London/delete/5

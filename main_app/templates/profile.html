@@ -24,7 +24,13 @@
 
     <!-- Profile (Image) -->
     <div class="col-md-6">
-      <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+      <img class="img-fluid" src="{{ img.url }}" alt="">
+      <p>{{ img.url }}</p>
+      <form action="{% url 'profile' %}" method="POST">
+        {% csrf_token %}
+        <input type="file" src="" alt="" name='img'>
+        <input class="button" type="submit">
+      </form>
       <p>Your City: {{city}}</p>
     </div>
 
