@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
   /* Color Palette */
@@ -9,41 +9,13 @@
   --purple: #973DFC;
   --light-blue: #01C9FF;
   --med-blue: #14ADFF;
-  --ocean-blue: #0071FF;
-}
-body{  
-  font-family: 'Monsterrat', sans-serif;  
-}
-.carousel-item {
-  height: 65vh;
-  min-height: 300px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.portfolio-item{
-  margin-bottom: 30px;
-}
-.navbar{
-  height: 12.5vh;
-  background-color: var(--dark-blue);
-}
-.navbar a{
-  color: var(--white);
-}
-.navbar a:hover{
-  color: var(--light-blue);
-}
-.my-4, .card-header{
-  text-align: center;
+  --ocean-bue: #0071FF;
+  --fb-white: #F0F2F5;
 }
 
 body{  
-  font-family: 'Open Sans', sans-serif;  
+  font-family: 'Montserrat', sans-serif; 
 }
-
   
 .carousel-item {
   height: 65vh;
@@ -62,6 +34,7 @@ body{
 .navbar{
   height: 12.5vh;
   background-color: var(--dark-blue);
+
 }
 
 .navbar a{
@@ -76,13 +49,9 @@ body{
   text-align: center;
 }
 
-.round{
-  border-radius:20px;
-}
-
 .city-tag{
   background-color: var(--med-blue);
-  color:var(--dark-blue);
+  color:var(--white);
 }
 
 .city{
