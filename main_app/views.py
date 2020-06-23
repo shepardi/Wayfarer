@@ -57,8 +57,10 @@ def home(request):
 
 
 def profile(request):
+    profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':
         user = User.objects.get(username=request.user.username)
+        profile = Profile.objects.get(user=request.user)
         form = Profile_Form(request.POST)
         if form.is_valid():
             new_form = form.save(commit=False)
@@ -66,15 +68,19 @@ def profile(request):
             profile.current_city = new_form.current_city
             profile.save()
         else:
-            user.first_name = request.POST['name']
-            user.save()
+            try:
+                user.first_name = request.POST['name']
+                user.save()
+            except:
+                profile.img=request.POST['img']
+                profile.save()
         return redirect('profile')
     form = Profile_Form()
     posts = Profile.objects.get(user=request.user).post_set.all()
-    city = Profile.objects.get(user=request.user).current_city
-    city = FindCity(city)
+    img= profile.img
+    city = FindCity(profile.current_city)
     context = {'user': request.user, 'form': form,
-               "posts": posts, 'city': city}
+               "posts": posts, 'city': city , 'img' : img}
     return render(request, 'profile.html', context)
 
 # Cities Routes (Temp)
@@ -112,54 +118,6 @@ def view_post(request, post_id):
 
 
 def logout(request):
-<<<<<<< HEAD
-  auth.logout(request)
-  return redirect('home')
-
-def delete(request, post_id ,city_name) :
-  city_name=FindCity(city_name)
-  Post.objects.get(id=post_id).delete()
-  return redirect( 'test' , city_name=city_name )
-  
-def edit_post(request , post_id):
-    post=Post.objects.get(id=post_id)
-    if request.method== 'POST':
-      changed_post=Post_Form(request.POST,instance=post)
-      if changed_post.is_valid():
-        changed_post.save()
-        return redirect('post' , post_id=post_id)
-    form=Post_Form(instance=post)
-    context={'form' :form , 'post_id':post_id}
-    return render(request, 'testprofile.html' , context)
-
-
-
-def test(request , city_name):
-  city_name=RiverceCity(city_name)
-  posts=Post.objects.all().order_by('-date')
-  city=[]
-  if request.method== 'POST':
-      form=Post_Form(request.POST)
-      if form.is_valid():
-        new_post=form.save(commit=False)
-        new_post.current_city=RiverceCity(request.POST['city'])
-        profile= Profile.objects.get(user=request.user)
-        new_post.profile=profile
-        new_post.save()
-  for post in posts:
-    if post.current_city == city_name:
-      city.append(post)
-  form=Post_Form()
-  city_full_name=FindCity(city_name)
-  context={"city" : city , 'form':form , 'city_name':city_full_name , 'city_code':city_name} 
-  
-  return render(request, 'test.html', context)
-
-
-  
-
-  
-=======
     auth.logout(request)
     return redirect('home')
 
@@ -208,7 +166,6 @@ def find_country(city):
     elif city == 'Seattle':
         return 'United States'
 
->>>>>>> 77dbbeac2f50b4b5f7f07ff63418b5d5d3ef1a44
 
 def FindCity(city):
     if city == 'LDN':
@@ -222,16 +179,6 @@ def FindCity(city):
 
 
 def RiverceCity(city):
-<<<<<<< HEAD
-  if city == 'London':
-    return 'LDN'
-  elif city == 'Sydney':
-    return 'SYD'
-  elif city == 'San Francisco' or city == 'San_Francisco':
-    return 'SFO'
-  elif city == 'Seattle':
-    return 'SEA'
-=======
     if city == 'London':
         return 'LDN'
     elif city == 'Sydney':
@@ -240,4 +187,3 @@ def RiverceCity(city):
         return 'SFO'
     elif city == 'Seattle':
         return 'SEA'
->>>>>>> 77dbbeac2f50b4b5f7f07ff63418b5d5d3ef1a44

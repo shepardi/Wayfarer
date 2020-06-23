@@ -4,12 +4,14 @@ let formSignIn = $('#form-sign-in');
 let formSignUp = $('#form-sign-up');
 let formSignIn2 = $('#form-sign-in2');
 let formSignUp2 = $('#form-sign-up2');
+let container=$('#container')
 
 btnSignIn.on('click', () => {
   formSignUp.addClass('hidden');
   formSignUp2.addClass('hidden');
   formSignIn.removeClass('hidden');
   formSignIn2.removeClass('hidden');
+  container.css('height','250px')
 });
 
 btnSignUp.on('click', () => {
@@ -17,6 +19,8 @@ btnSignUp.on('click', () => {
   formSignIn2.addClass('hidden');
   formSignUp.removeClass('hidden');
   formSignUp2.removeClass('hidden');
+  container.css('height','450px')
+
 });
 
 
