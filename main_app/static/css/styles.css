@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 :root {
   /* Color Palette */
@@ -10,10 +10,11 @@
   --light-blue: #01C9FF;
   --med-blue: #14ADFF;
   --ocean-bue: #0071FF;
+  --fb-white: #F0F2F5;
 }
 
 body{  
-  font-family: 'Open Sans', sans-serif;  
+  font-family: 'Montserrat', sans-serif; 
 }
   
 .carousel-item {
@@ -33,6 +34,7 @@ body{
 .navbar{
   height: 12.5vh;
   background-color: var(--dark-blue);
+
 }
 
 .navbar a{
@@ -47,5 +49,12 @@ body{
   text-align: center;
 }
 
+.city-tag{
+  background-color: var(--med-blue);
+  color:var(--white);
+}
 
-
+.city{
+  background-color: var(--ocean-blue);
+  color:var(--dark-blue);
+}

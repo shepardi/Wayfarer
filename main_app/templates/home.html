@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block link %}
+<script defer src="{% static 'scripts/home.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 {% block content %}
+
+
 
 <!-- ----------------------------- Slide Show View ----------------------------- -->
 <section>
@@ -51,48 +57,45 @@
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
   aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div id="container" class="modal-content">
       <!-- Close Button -->
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+        <!-- <span class="close-modal" aria-hidden="true">&times;</span> -->
       </button>
       <!-- Sign In -->
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Sign In</h5>
-      </div>
-      <div class="modal-body">
+
+      <div id="form-sign-in2" class="modal-body ">
+        <div id="form-sign-in" class="">
+          <h3 class="modal-title mb-2">Sign In</h3>
+        </div>
         {% if err2 %}
         <p>{{ err2 }}</p>
         {% endif %}
         <!-- Sign-In  Form -->
-        {% if err2 %}
-        <p>  {{err2}} </p>
-        {% endif %}
-        <form action="{% url 'home' %}" method="POST">
+        <form class="login-form" action="{% url 'home' %}" method="POST">
           {% csrf_token %}
-          <input type="text" name='username' placeholder="Username">
-          <input type="password" name='password' placeholder="Password">
-          <input type="submit" value="login">
-
+          <input type="text" name="username" placeholder="Username" autocomplete="off">
+          <input type="password" name="password" placeholder="Password" autocomplete="off">
+          <input type="submit" value="Sign In">
         </form>
       </div>
       <!-- Sign Up -->
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Sign Up</h5>
-      </div>
-      <div class="modal-body">
+      <div id="form-sign-up2" class="modal-body">
+        <div id="form-sign-up" class="">
+          <h3 class="modal-title mb-2" id="staticBackdropLabel">Sign Up</h3>
+        </div>
         <!-- Sign-Up Form -->
-        <form action="{% url 'home' %}" method="POST">
+        <form class="signup-form" action="{% url 'home' %}" method="POST">
           {% if err %}
           <p> {{err}} </p>
           {% endif %}
           {% csrf_token %}
           {{ form.as_p }}
-          <input type="text" name='name' placeholder="Name">
-          <input type="text" name='username' placeholder="Username">
-          <input type="password" name='password' placeholder="Password">
-          <input type="email" name='email' placeholder="Email">
-          <input type="submit" value="go">
+          <input type="text" name='name' placeholder="Name" autocomplete="off">
+          <input type="text" name='username' placeholder="Username" autocomplete="off">
+          <input type="password" name='password' placeholder="Password" autocomplete="off">
+          <input type="email" name='email' placeholder="Email" autocomplete="off">
+          <input type="submit" value="Sign Up">
         </form>
       </div>
 

@@ -14,7 +14,6 @@
 
     </h1>
 
-
     <!-- Breadcrumbs -->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -34,16 +33,22 @@
             <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
             <hr>
             <!-- Date/Time -->
-            <p>Posted on ...</p>
+            <p>Posted on {{ post.date }}</p>
 
-            <!-- TODO - ask ivo for post date  -->
             <hr>
             <!-- Post Content -->
             <p>{{ post.description }}</p>
             <hr>
 
+            <!-- Enables user to Edit/Delete if they are the Author of the Post-->
+            {% if user.username == post.profile.user.username %}
+            <a href="{% url 'delete' city_code post.id %}"> Delete</a>
+            <a href="{% url 'edit' post.id %}"> Edit</a>
+            {% endif %}
+
         </div>
         <!-- Sidebar Widgets Column -->
+        <!-- TODO  ADVERTISING GIPHY OR SMTHG-->
         <div class="col-md-4">
             <h2>SideBar Item</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nobis ipsum laboriosam minima, neque
@@ -57,6 +62,7 @@
 <!-- /.container -->
 {% endblock%}
 
+<<<<<<< HEAD
 
 <!-- Ivo Stuff -->
 <h1>{{ post.title }}</h1>
@@ -84,4 +90,6 @@
 
 </body>
 
+=======
+>>>>>>> 77dbbeac2f50b4b5f7f07ff63418b5d5d3ef1a44
 </html>
