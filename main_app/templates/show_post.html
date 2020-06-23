@@ -14,7 +14,6 @@
 
     </h1>
 
-
     <!-- Breadcrumbs -->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -41,8 +40,15 @@
             <!-- Post Content -->
             <p>{{ post.description }}</p>
             <hr>
+
+            <!-- Enables user to Edit/Delete if they are the Author of the Post-->
+            <p>User: {{user.username}}</p>
+            <p>Post.username: {{post.profile.user.username}}</p>
+
+            {% if user.username == post.profile.user.username %}
             <a href="{% url 'delete' city_code post.id %}"> Delete</a>
             <a href="{% url 'edit' post.id %}"> Edit</a>
+            {% endif %}
 
         </div>
         <!-- Sidebar Widgets Column -->
@@ -79,6 +85,7 @@
     <h1>{{ city }}</h1>
     <h1>{{ post.description }}</h1>
     <h1>{{ post.profile.user.username }}</h1>
+
 
     <a href="{% url 'delete' city_code post.id %}"> Delete</a>
     <a href="{% url 'edit' post.id %}"> Edit</a>

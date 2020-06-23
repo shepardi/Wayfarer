@@ -9,7 +9,35 @@
   --purple: #973DFC;
   --light-blue: #01C9FF;
   --med-blue: #14ADFF;
-  --ocean-bue: #0071FF;
+  --ocean-blue: #0071FF;
+}
+body{  
+  font-family: 'Monsterrat', sans-serif;  
+}
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.portfolio-item{
+  margin-bottom: 30px;
+}
+.navbar{
+  height: 12.5vh;
+  background-color: var(--dark-blue);
+}
+.navbar a{
+  color: var(--white);
+}
+.navbar a:hover{
+  color: var(--light-blue);
+}
+.my-4, .card-header{
+  text-align: center;
 }
 
 body{  
@@ -61,4 +89,3 @@ body{
   background-color: var(--ocean-blue);
   color:var(--dark-blue);
 }
-
