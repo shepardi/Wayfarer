@@ -3,114 +3,102 @@
 {% block link %}
 <link rel="stylesheet" href="{% static 'css/cities.css' %}">
 <script defer src="{% static 'scripts/app.js' %}"></script>
-
 {% endblock%}
 {% block content%}
 <!-- Page Content -->
-
 <div class="container-fluid pt-3">
-    <div class="row">
-        <!-- City Selection Column -->
-        <div class="col-lg-4 p-4 mx-4 city ">
-            <h2>Cities:</h2>
-            <a class="city-btn" href="{% url 'cities' 'London' %}">
-                <div id="london" class="mb-4 d-flex p-2 round city-tag ">
-                    <img src="../static/images/bigben.jpg" alt="" height="135vh" width="135vh" class=" round">
-                    <h3 class="my-auto float left ml-1">London</h3>
-                </div>
-            </a>
-            <a class="city-btn" href="{% url 'cities' 'San_Francisco' %}">
-                <div id="sanfrancisco" class=" mb-4 d-flex p-2 round city-tag ">
-                    <img src="../static/images/goldengate.jpg" alt="" height="135vh" width="135vh" class=" round">
-                    <h3 class="my-auto float left ml-1">San Francisco</h3>
-                </div>
-            </a>
-            <a class="city-btn" href="{% url 'cities' 'Sydney' %}">
-                <div id="sydney" class=" mb-4 d-flex  p-2 round city-tag ">
-                    <img src="../static/images/syd-beach.jpg" alt="" height="135vh" width="135vh" class=" round">
-                    <h3 class="my-auto float left ml-1">Sydney</h3>
-                </div>
-            </a>
-            <a class="city-btn" href="{% url 'cities' 'Seattle' %}">
-                <div id="seattle" class=" mb-4 d-flex p-2 round city-tag ">
-                    <img src="../static/images/spaceneedle.jpg" alt="" height="135vh" width="135vh" class=" round">
-                    <h3 class="my-auto float left ml-1">Seattle</h3>
-                </div>
-            </a>
+  <div class="row">
+    <!-- City Selection Column -->
+    <div class="col-lg-4 p-4 mx-4 city ">
+      <h2>Cities:</h2>
+      <a class="city-btn" href="{% url 'cities' 'London' %}">
+        <div id="london" class="mb-4 d-flex p-3 round city-tag ">
+          <img src="../static/images/bigben.jpg" alt="" height="135vh" width="135vh" class=" round">
+          <h3 class="my-auto float left ml-1">London</h3>
         </div>
-
-        <!-- City Posts Column -->
-        <div class="col-md-7">
-            <div>
-                <!-- City Image -->
-                <div class="mt-4">
-                    <img id="main-pic" src="http://placehold.it/200x200" alt="" height="200vh" width="250vh"
-                        class="border round">
-                </div>
-                <!-- City Name -->
-                <div class="d-flex">
-                    <h2>{{ city_name }}</h2>
-                    <p>{{ country }}</p>
-                </div>
-
-            </div>
-
-            <div class="pt-4 pb-2">
-                <h2>Posts:<a class="nav-link float-right btn-white fa fa-plus-circle aria-hidden=" true" href="#"
-                        data-toggle="modal" data-target="#loginModal"></a>
-                </h2>
-
-                <!-- Create Post Modal -->
-                <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <!-- Close Button -->
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <!-- Sign In -->
-                            <div class="modal-header">
-                                <h3>Create Post</h3>
-                            </div>
-                            <div class="modal-body">
-                                <form action="{% url 'cities' city_name %}" method="POST">
-                                    {% csrf_token %}
-                                    <input type="text" name="title" placeholder="title" class="mb-2">
-                                    <textarea name="description" cols="30" rows="10"
-                                        placeholder="description"></textarea>
-                                    <input id="city-name" type="text" value='{{city_name}}' readonly name="city">
-                                    <input type="submit" value="Create Post">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Posts Lists -->
-            <!-- for loop start -->
-            <div class=" p-2 round mb-4" style="height:420px">
-                <!-- Title -->
-                {% for c in city %}
-                <div class="posts border p-2 round mb-4">
-                    <a class="post-card" href="{% url 'post' c.id %}">
-                        <h3>{{ c.title }}</h3>
-                    </a>
-                    <p class="maxtext">{{ c.description }}</p>
-                </div>
-                {% endfor %}
-            </div>
-
-            <button id='prev'>
-                < </button>
-                    <button id='next'> > </button>
-                    <!-- endfor -->
-
+      </a>
+      <a class="city-btn" href="{% url 'cities' 'San_Francisco' %}">
+        <div id="sanfrancisco" class=" mb-4 d-flex p-3 round city-tag ">
+          <img src="../static/images/goldengate.jpg" alt="" height="135vh" width="135vh" class=" round">
+          <h3 class="my-auto float left ml-1">San Francisco</h3>
         </div>
-        <!-- /.row -->
-        <!-- /.container -->
+      </a>
+      <a class="city-btn" href="{% url 'cities' 'Sydney' %}">
+        <div id="sydney" class=" mb-4 d-flex  p-3 round city-tag ">
+          <img src="../static/images/syd-beach.jpg" alt="" height="135vh" width="135vh" class=" round">
+          <h3 class="my-auto float left ml-1">Sydney</h3>
+        </div>
+      </a>
+      <a class="city-btn" href="{% url 'cities' 'Seattle' %}">
+        <div id="seattle" class=" mb-4 d-flex p-3 round city-tag ">
+          <img src="../static/images/spaceneedle.jpg" alt="" height="135vh" width="135vh" class=" round">
+          <h3 class="my-auto float left ml-1">Seattle</h3>
+        </div>
+      </a>
     </div>
-</div>
-{% endblock%}
+    <!-- City Posts Column -->
+    <div class="col-md-7">
+      <div>
+        <!-- City Image -->
+        <div class="mt-4">
+          <h2>{{ city_name }}</h2>
+          <p>{{ country }}</p>
+        </div>
+        <div>
+          <img id="main-pic" src="http://placehold.it/200x200" alt="" height="200vh" width="250vh" class="border round">
+        </div>
+        <!-- City Name -->
+
+      </div>
+      <div class="pt-4 pb-2">
+        <h2>Posts:<a class="nav-link float-right btn-white fa fa-plus-circle aria-hidden=" true" href="#"
+            data-toggle="modal" data-target="#loginModal"></a>
+        </h2>
+        <!-- Create Post Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div id="container" class="modal-content">
+
+              <div class="modal-body">
+                <form action="{% url 'cities' city_name %}" method="POST">
+                  {% csrf_token %}
+                  <p class="text-white">Title: {{form.title}}</p>
+                  <p>{{form.description}}</p>
+
+                  <input id="city-name" type="text" value='{{city_name}}' readonly name="city" hidden="true">
+                  <input type="submit" value="Create Post">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Posts Lists -->
+        <!-- for loop start -->
+        <div class=" p-2 round mb-4" style="height:420px">
+          <!-- Title -->
+          {% for c in city %}
+          <div class="posts border p-2 round mb-4">
+            <a class="post-card" href="{% url 'post' c.id %}">
+              <h3>{{ c.title }}</h3>
+            </a>
+            <p class="maxtext">{{ c.description }}</p>
+          </div>
+          {% endfor %}
+          <button id='prev' class="align-text-bottom fas fa-angle-left">
+          </button>
+          <button id='next' class="align-text-bottom fas fa-angle-right"> </button>
+        </div>
+        <!-- endfor -->
+      </div>
+      <!-- /.row -->
+      <!-- /.container -->
+    </div>
+  </div>
+
+  <footer class="py-5 ">
+    <div class="container">
+      <p class="m-0 text-center" style="color: #100935">Copyright &copy;2020 - Wayfarer</p>
+    </div>
+  </footer>
+  {% endblock%}

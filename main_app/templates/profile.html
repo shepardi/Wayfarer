@@ -16,56 +16,29 @@
   <!-- Page Title ( Profile: user ) -->
   <h1 class="mt-4 mb-3">
     <small>{{user.first_name}}</small>
-    <p class="joined-date float-right pt-3">Joined on: <span class="orange">{{ user.date_joined }}</span>
+    <p class="joined-date float-right pt-3">Joined on: {{ user.date_joined }}
     </p>
 
   </h1>
 
 
   <!-- Profile User Row -->
-  <div class="row">
+  <div class="row profile-bg round">
 
     <!-- Profile (Image) -->
-    <div class="col-md-6">
+    <div class="col-md-4">
 
       {% if img %}
       <!-- Custom Profile Picture -->
-      <img class="img-fluid" src="{{ img.url }}" alt="">
+      <img class="img-fluid pt-2" src="{{ img.url }}" alt="" height="350px" width="350px">
       {% else%}
       <!-- Default Profile Picture -->
-      <img class="img-fluid"
+      <img class="img-fluid pt-2"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Domestic_Cat_Face_Shot.jpg/800px-Domestic_Cat_Face_Shot.jpg"
         alt="">
       {% endif %}
 
       <p>Your City: {{city}}</p>
-
-    </div>
-
-    <!-- Profile (User Form) -->
-    <div class="col-md-6 border">
-      <!--  User First name Profile Form -->
-      <form id="name-edit" action="{% url 'profile' %}" method="POST">
-        {% csrf_token %}
-        <input type="text" placeholder={{user.first_name}} name='name' class="">
-        <!-- <input type="submit" value="Submit"> -->
-        <button id="name-edit-btn" class="btn-light rounded-pill" type="submit">Edit Name</button>
-      </form>
-
-
-      <!-- City name Form -->
-
-      <form id="city-edit" action="{% url 'profile' %}" method="POST" class="my-3">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <!-- <input type="submit" value="Submit"> -->
-      </form>
-      <button id="city-edit-btn" class="btn-light rounded-pill" type="submit">Edit City</button>
-
-
-
-
-      <!-- Profile Picture Uploader -->
       <form id="picture-edit" action="{% url 'img_upload' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" name="img">
@@ -75,11 +48,24 @@
 
     </div>
 
+    <!-- Profile (User Form) -->
+    <div class="flex-div col-md-4 ">
+      <!--  User First name Profile Form -->
+      <form id="name-edit" action="{% url 'profile' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder={{user.first_name}} name='name' class="">
+        <!-- <input type="submit" value="Submit"> -->
+        <button id="name-edit-btn" class="btn-light rounded-pill" type="submit">Edit Name</button>
+      </form>
 
-
-
-
-
+      <!-- City name Form -->
+      <form id="city-edit" action="{% url 'profile' %}" method="POST" class="my-3">
+        {% csrf_token %}
+        {{ form }}
+        <!-- <input type="submit" value="Submit"> -->
+        <button id="city-edit-btn" class="btn-light rounded-pill" type="submit">Edit City</button>
+      </form>
+    </div>
   </div>
   <!-- [END] Profile User Row -->
 
@@ -110,7 +96,10 @@
   <!-- [END] Related Posts Row-->
 
 </div>
+<footer class="py-5 ">
+  <div class="container">
 
-
+  </div>
+</footer>
 
 {% endblock %}

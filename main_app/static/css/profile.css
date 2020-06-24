@@ -17,13 +17,6 @@ body{
   color: var(--dark-blue);
 }
 
-.navbar{
-  border-bottom: 1px solid var(--med-blue);
-}
-
-.breadcrumb {
-  display: none;
-}
 
 .joined-date{
   font-size: 20px;
@@ -44,24 +37,34 @@ body{
   text-decoration: none;
 }
 
-#name-edit, #city-edit, #picture-edit{
-  
-
+.flex-div{
+  display: flex;
+  flex-direction: column;
 }
-/* input[type=submit] {
+
+.btn-light{
+  display: inline;
+}
+
+
+ button[type=submit] {
   border: none;
   width: 100px;
-  background-color: var(--white);
+  background-color: transparent;
   color: var(--dark-blue);
   font-size: 1rem;
   line-height: 1.5rem;
   padding: 10px 0;
   border-radius: 10px;
   margin-top: 1rem;
-}
+} 
 
 input[type=submit]:hover {
   background-color: var(--orange);
   color: var(--white);
 }
- */
+
+.profile-bg{
+  background: url(../images/sky.jpg) center/cover;
+  filter: opacity();
+}
