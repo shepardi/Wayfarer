@@ -17,9 +17,10 @@ body{
   color: var(--white);
 }
 
+/* 
 .navbar{
-  border-bottom: 1px solid var(--white);
-}
+  border-bottom: 1px solid var(--orange);
+} */
 
 .hidden{
 display: none;
