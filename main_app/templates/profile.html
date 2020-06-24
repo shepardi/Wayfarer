@@ -30,17 +30,21 @@
 
     <!-- Profile (Image) -->
     <div class="col-md-6">
-
+      
+      {% if img %}
+      
       <img class="img-fluid" src="../static/images/photo3.jpg" alt="">
       <p>
         Your City: <span class="orange">{{city}}</span>
       </p>
 
       <img class="img-fluid" src="{{ img.url }}" alt="">
-      <p>{{ img.url }}</p>
-      <form action="{% url 'profile' %}" method="POST">
+      {% else%}
+      <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Domestic_Cat_Face_Shot.jpg/800px-Domestic_Cat_Face_Shot.jpg" alt="">
+      {% endif %}
+      <form action="{% url 'img_upload' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="file" src="" alt="" name='img'>
+        <input type="file" name="img">
         <input class="button" type="submit">
       </form>
       <p>Your City: {{city}}</p>
