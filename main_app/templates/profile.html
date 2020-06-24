@@ -23,17 +23,17 @@
 
 
   <!-- Profile User Row -->
-  <div class="row">
+  <div class="row profile-bg round">
 
     <!-- Profile (Image) -->
     <div class="col-md-4">
 
       {% if img %}
       <!-- Custom Profile Picture -->
-      <img class="img-fluid" src="{{ img.url }}" alt="" height="350px" width="350px">
+      <img class="img-fluid pt-2" src="{{ img.url }}" alt="" height="350px" width="350px">
       {% else%}
       <!-- Default Profile Picture -->
-      <img class="img-fluid"
+      <img class="img-fluid pt-2"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Domestic_Cat_Face_Shot.jpg/800px-Domestic_Cat_Face_Shot.jpg"
         alt="">
       {% endif %}
@@ -49,7 +49,7 @@
     </div>
 
     <!-- Profile (User Form) -->
-    <div class="flex-div col-md-8 ">
+    <div class="flex-div col-md-4 ">
       <!--  User First name Profile Form -->
       <form id="name-edit" action="{% url 'profile' %}" method="POST">
         {% csrf_token %}
@@ -65,9 +65,7 @@
         <!-- <input type="submit" value="Submit"> -->
         <button id="city-edit-btn" class="btn-light rounded-pill" type="submit">Edit City</button>
       </form>
-
     </div>
-
   </div>
   <!-- [END] Profile User Row -->
 
@@ -100,7 +98,7 @@
 </div>
 <footer class="py-5 ">
   <div class="container">
-    <p class="m-0 text-center" style="color: #100935">Copyright &copy;2020 - Wayfarer</p>
+
   </div>
 </footer>
 

@@ -63,3 +63,8 @@ input[type=submit]:hover {
   background-color: var(--orange);
   color: var(--white);
 }
+
+.profile-bg{
+  background: url(../images/sky.jpg) center/cover;
+  filter: opacity();
+}
