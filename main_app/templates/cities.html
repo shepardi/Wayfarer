@@ -88,9 +88,10 @@
                 </div>
             </div>
 
+
             <!-- Posts Lists -->
             <!-- for loop start -->
-            <div class=" p-2 round mb-4">
+            <div class=" p-2 round mb-4" style="height:420px">
                 <!-- Title -->
                 {% for c in city %}
                 <div class="posts border p-2 round mb-4">
@@ -101,13 +102,15 @@
                 </div>
                 {% endfor %}
             </div>
-            <!-- endfor -->
+
+            <button id='prev'>
+                < </button>
+                    <button id='next'> > </button>
+                    <!-- endfor -->
 
         </div>
         <!-- /.row -->
+        <!-- /.container -->
     </div>
-
-</div>
-<!-- /.container -->
 </div>
 {% endblock%}

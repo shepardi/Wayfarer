@@ -29,6 +29,25 @@ body{
   font-size: 20px;
 }
 
+.post-img{
+  height:200px;
+}
+
+.card{
+  background-color: transparent;
+  border:none;
+  text-align: center;
+  color: var(--dark-blue);
+}
+
+.card-link{
+  text-decoration: none;
+}
+
+#name-edit, #city-edit, #picture-edit{
+  
+
+}
 /* input[type=submit] {
   border: none;
   width: 100px;
