@@ -57,6 +57,7 @@ def home(request):
 
 
 def profile(request):
+    print(request.user.pk)
     profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':
         user = User.objects.get(username=request.user.username)
@@ -72,15 +73,15 @@ def profile(request):
                 user.first_name = request.POST['name']
                 user.save()
             except:
-                profile.img=request.POST['img']
+                profile.img = request.POST['img']
                 profile.save()
         return redirect('profile')
     form = Profile_Form()
     posts = Profile.objects.get(user=request.user).post_set.all()
-    img= profile.img
+    img = profile.img
     city = FindCity(profile.current_city)
     context = {'user': request.user, 'form': form,
-               "posts": posts, 'city': city , 'img' : img}
+               "posts": posts, 'city': city, 'img': img}
     return render(request, 'profile.html', context)
 
 # Cities Routes (Temp)

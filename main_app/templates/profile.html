@@ -36,8 +36,8 @@
         Your City: <span class="orange">{{city}}</span>
       </p>
 
+      <!-- Ivo's Profile Pic Stuff -->
       <img class="img-fluid" src="{{ img.url }}" alt="">
-      <p>{{ img.url }}</p>
       <form action="{% url 'profile' %}" method="POST">
         {% csrf_token %}
         <input type="file" src="" alt="" name='img'>
