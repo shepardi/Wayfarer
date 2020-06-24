@@ -75,5 +75,5 @@ text-decoration: none !important;
 }
 
 .current{
-  border: 1px solid var(--orange);
+  border: 5px solid var(--orange);
 }

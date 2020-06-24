@@ -5,9 +5,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.core.mail import send_mail
-from django.core.files.storage import FileSystemStorage  
+from django.core.files.storage import FileSystemStorage
 
-###### our Imports #333
+# our Imports #333
 
 from .models import Post, CURRENT_CITY, Profile, City
 from .forms import Profile_Form, Post_Form
@@ -55,6 +55,7 @@ def home(request):
 
 
 def profile(request):
+    print(request.user.pk)
     profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':
         print(request.FILES)
@@ -68,14 +69,14 @@ def profile(request):
             profile.save()
         else:
             user.first_name = request.POST['name']
-            user.save()           
+            user.save()
         return redirect('profile')
     form = Profile_Form()
     posts = Profile.objects.get(user=request.user).post_set.all()
-    img= profile.img
+    img = profile.img
     city = FindCity(profile.current_city)
     context = {'user': request.user, 'form': form,
-               "posts": posts, 'city': city , 'img' : img}
+               "posts": posts, 'city': city, 'img': img}
     return render(request, 'profile.html', context)
 
 # Cities Routes (Temp)
@@ -107,12 +108,13 @@ def view_cities(request, city_name):
                'city_code': city_name, 'country': find_country(city_full_name)}
     return render(request, 'cities.html', context)
 
+
 def img_upload(request):
     profile = Profile.objects.get(user=request.user)
     fs = FileSystemStorage()
-    img_file=request.FILES['img']
-    fs.save(img_file.name,img_file)
-    profile.img=request.FILES['img']
+    img_file = request.FILES['img']
+    fs.save(img_file.name, img_file)
+    profile.img = request.FILES['img']
     profile.save()
     return redirect('profile')
 
@@ -125,8 +127,8 @@ def view_post(request, post_id):
         post.current_city), "city_code": post.current_city}
     return render(request, 'show_post.html', context)
 
-
 ##### LOGING OUT #####
+
 
 def logout(request):
     auth.logout(request)
@@ -144,9 +146,10 @@ def delete(request, post_id, city_name):
         city_name = FindCity(city_name)
         return redirect('cities', city_name=city_name)
     # else TODO: 404 page
-    return redirect('home')
+    return redirect('404.html')
 
 ##### EDIT A POST #######
+
 
 @login_required
 def edit_post(request, post_id):
@@ -155,16 +158,16 @@ def edit_post(request, post_id):
     if request.user.username != post.profile.user.username:
         Post.objects.get(id=post_id)
         # TODO 404 page
-        return redirect('home')
+        return redirect('404.html')
     if request.method == 'POST':
         changed_post = Post_Form(request.POST, instance=post)
         if changed_post.is_valid():
             changed_post.save()
             return redirect('post', post_id=post_id)
     form = Post_Form(instance=post)
-    context = {'form': form, 'post_id': post_id}
-    return render(request, 'testprofile.html', context)
-
+    context = {'form': form, 'post_id': post_id,
+               'post': post, 'city': FindCity(post.current_city)}
+    return render(request, 'edit_post.html', context)
 
 
 def test(request, city_name):

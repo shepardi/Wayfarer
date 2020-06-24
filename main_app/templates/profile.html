@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
+
 {% load static %}
+
 {% block link %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 <script defer src="{% static 'scripts/app.js' %}"></script>
+<script defer src="{% static 'scripts/profile.js' %}"></script>
 
 {% endblock%}
+
 {% block content %}
 <!-- Page Content -->
 <div class="container">
@@ -17,56 +21,58 @@
 
   </h1>
 
-  <!-- Breadcrumb Profile Page -->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="{% url 'home' %}">Home</a>
-    </li>
-    <li class="breadcrumb-item active">Profile Page</li>
-  </ol>
 
   <!-- Profile User Row -->
   <div class="row">
 
     <!-- Profile (Image) -->
     <div class="col-md-6">
-      
-      {% if img %}
-      
-      <img class="img-fluid" src="../static/images/photo3.jpg" alt="">
-      <p>
-        Your City: <span class="orange">{{city}}</span>
-      </p>
 
+      {% if img %}
+      <!-- Custom Profile Picture -->
       <img class="img-fluid" src="{{ img.url }}" alt="">
       {% else%}
-      <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Domestic_Cat_Face_Shot.jpg/800px-Domestic_Cat_Face_Shot.jpg" alt="">
+      <!-- Default Profile Picture -->
+      <img class="img-fluid"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Domestic_Cat_Face_Shot.jpg/800px-Domestic_Cat_Face_Shot.jpg"
+        alt="">
       {% endif %}
-      <form action="{% url 'img_upload' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="img">
-        <input class="button" type="submit">
-      </form>
+
       <p>Your City: {{city}}</p>
 
     </div>
 
     <!-- Profile (User Form) -->
-    <div class="col-md-6">
+    <div class="col-md-6 border">
       <!--  User First name Profile Form -->
-      <h6 class="my-3">Name</h6>
-      <form action="{% url 'profile' %}" method="POST">
+      <form id="name-edit" action="{% url 'profile' %}" method="POST">
         {% csrf_token %}
         <input type="text" placeholder={{user.first_name}} name='name' class="">
-        <input type="submit" value="Submit">
+        <!-- <input type="submit" value="Submit"> -->
+        <button id="name-edit-btn" class="btn-light rounded-pill" type="submit">Edit Name</button>
       </form>
 
+
       <!-- City name Form -->
-      <form action="{% url 'profile' %}" method="POST" class="my-3">
+
+      <form id="city-edit" action="{% url 'profile' %}" method="POST" class="my-3">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Submit">
+        <!-- <input type="submit" value="Submit"> -->
       </form>
+      <button id="city-edit-btn" class="btn-light rounded-pill" type="submit">Edit City</button>
+
+
+
+
+      <!-- Profile Picture Uploader -->
+      <form id="picture-edit" action="{% url 'img_upload' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="img">
+        <!-- <input class="button" type="submit"> -->
+        <button id="picture-edit-btn" class="btn-light rounded-pill" type="submit">Edit Picture</button>
+      </form>
+
     </div>
 
 
@@ -85,7 +91,7 @@
     <!-- Posts (Foor-Loop Postings) -->
     {% for post in posts %}
     <div class="col-md-3 col-sm-6 mb-4">
-      <a href="{% url 'post' post.id %}">
+      <a href="{% url 'post' post.id %}" class="card-link">
         <!-- Post Card -->
         <div class="card">
 
@@ -93,7 +99,8 @@
           <p>{{post.title}}</p>
 
           <!-- Picture -->
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          <img class="post-img" src="http://placehold.it/500x300" heigh="135vh">
+          <input class="post-input" type="text" value="{{ post.current_city}}" hidden="true">
         </div>
       </a>
     </div>

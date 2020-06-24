@@ -1,10 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block link %}
-<link rel="stylesheet" href="{% static 'css/post.css' %}">
-<script defer src="{% static 'scripts/app.js' %}"></script>
 
-{% endblock%}
 
 {% block content %}
 
@@ -19,25 +14,33 @@
 
     </h1>
 
-
     <div class="row">
         <!-- Post Content Column -->
         <div class="col-lg-8">
             <!-- Preview Image -->
-            <img class="img-fluid rounded" src="../static/images/syd-beach.jpg" alt="">
+            <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
             <hr>
             <!-- Date/Time -->
             <p>Posted on {{ post.date }}</p>
 
             <hr>
             <!-- Post Content -->
-            <p>{{ post.description }}</p>
+            <form action="{% url 'edit' post_id %}" method="POST">
+                {% csrf_token %}
+                <div class="card">
+                    <!-- Title -->
+                    <p>Title: {{form.title}}</p>
+                    <!-- Description -->
+                    <p>Description: </p>{{ form.description }}
+                    <input type="submit">
+                </div>
+
+            </form>
             <hr>
 
             <!-- Enables user to Edit/Delete if they are the Author of the Post-->
             {% if user.username == post.profile.user.username %}
-            <a href="{% url 'delete' city_code post.id %}"> Delete</a>
-            <a href="{% url 'edit' post.id %}"> Edit</a>
+            <a href="{% url 'delete' post.current_city post.id %}"> Delete</a>
             {% endif %}
 
         </div>
@@ -45,15 +48,14 @@
         <!-- TODO  ADVERTISING GIPHY OR SMTHG-->
         <div class="col-md-4">
             <h2>SideBar Item</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nobis ipsum laboriosam minima, neque
-                molestias, saepe expedita placeat nesciunt labore ratione quam corrupti necessitatibus facilis, quisquam
-                animi quos. Quae consectetur molestias excepturi dolore architecto tenetur libero vero vitae? Enim
-                eligendi optio omnis voluptatum quia quos, cumque libero possimus iure aliquam!</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit vel quo ducimus veritatis aperiam eos
+                rem deleniti nam tenetur molestiae maxime dolores, necessitatibus quasi eius ut odio cumque ipsam magni?
+                Iusto repellat blanditiis sit dolore laudantium distinctio unde sint possimus!</p>
         </div>
     </div>
     <!-- /.row -->
 </div>
 <!-- /.container -->
-{% endblock%}
 
-</html>
+
+{% endblock%}
