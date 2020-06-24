@@ -31,8 +31,8 @@ def home(request):
                 new_profile.user = user
                 new_profile.save()
                 login(request, user)
-                send_mail('Welcome to Wayfair!', 'Hello', 'wwayfair82@gmail.com',
-                          [request.POST['email']], fail_silently=False)
+                send_mail('Welcome', 'Hello and Welcome to Wayfarer!', 'wwayfair82@gmail.com',
+                          [request.POST['email']], fail_silently=True)
                 return redirect('profile')
             except:
                 err = "This profile already exists!"
@@ -120,11 +120,11 @@ def img_upload(request):
 
 
 #### VIEWING a SPECIFIC POST ######
-
 def view_post(request, post_id):
     post = Post.objects.get(id=post_id)
+    posts = Profile.objects.get(user=request.user).post_set.all()
     context = {"post": post, 'city': FindCity(
-        post.current_city), "city_code": post.current_city}
+        post.current_city), "city_code": post.current_city, "posts": posts}
     return render(request, 'show_post.html', context)
 
 ##### LOGING OUT #####

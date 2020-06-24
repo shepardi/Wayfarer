@@ -16,7 +16,7 @@
   <!-- Page Title ( Profile: user ) -->
   <h1 class="mt-4 mb-3">
     <small>{{user.first_name}}</small>
-    <p class="joined-date float-right pt-3">Joined on: <span class="orange">{{ user.date_joined }}</span>
+    <p class="joined-date float-right pt-3">Joined on: {{ user.date_joined }}
     </p>
 
   </h1>
@@ -30,7 +30,7 @@
 
       {% if img %}
       <!-- Custom Profile Picture -->
-      <img class="img-fluid" src="{{ img.url }}" alt="">
+      <img class="img-fluid" src="{{ img.url }}" alt="" height="350px" width="350px">
       {% else%}
       <!-- Default Profile Picture -->
       <img class="img-fluid"
@@ -39,11 +39,17 @@
       {% endif %}
 
       <p>Your City: {{city}}</p>
+      <form id="picture-edit" action="{% url 'img_upload' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="img">
+        <!-- <input class="button" type="submit"> -->
+        <button id="picture-edit-btn" class="btn-light rounded-pill" type="submit">Edit Picture</button>
+      </form>
 
     </div>
 
     <!-- Profile (User Form) -->
-    <div class="col-md-6 border">
+    <div class="flex-div col-md-4 ">
       <!--  User First name Profile Form -->
       <form id="name-edit" action="{% url 'profile' %}" method="POST">
         {% csrf_token %}
@@ -52,25 +58,12 @@
         <button id="name-edit-btn" class="btn-light rounded-pill" type="submit">Edit Name</button>
       </form>
 
-
       <!-- City name Form -->
-
       <form id="city-edit" action="{% url 'profile' %}" method="POST" class="my-3">
         {% csrf_token %}
         {{ form.as_p }}
         <!-- <input type="submit" value="Submit"> -->
-      </form>
-      <button id="city-edit-btn" class="btn-light rounded-pill" type="submit">Edit City</button>
-
-
-
-
-      <!-- Profile Picture Uploader -->
-      <form id="picture-edit" action="{% url 'img_upload' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="img">
-        <!-- <input class="button" type="submit"> -->
-        <button id="picture-edit-btn" class="btn-light rounded-pill" type="submit">Edit Picture</button>
+        <button id="city-edit-btn" class="btn-light rounded-pill" type="submit">Edit City</button>
       </form>
 
     </div>

@@ -52,3 +52,25 @@ input[type=submit]:hover {
   background-color: var(--orange);
   color: var(--white);
 }
+
+.fa-trash{
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.fa-edit{
+  cursor: pointer;
+  font-size: 25px;
+  color: #100935;
+  margin-left: 20px;
+}
+
+.card{
+  border-radius: 10px;
+  color: var(--dark-blue);
+}
+
+.post-city{
+  font-size: 26px;
+  padding-top: 10px;
+}

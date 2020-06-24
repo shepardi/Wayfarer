@@ -14,9 +14,9 @@
     <h1 class="mt-4 mb-3">{{ post.title }}
         <small>by
             {{ post.profile.user.username }}
-            <p class="float-right">{{ city }}</p>
+            <input id="city-name" type="" value="{{city}}" style="display: none;">
+            <p class="post-city float-right">{{ city }}</p>
         </small>
-
     </h1>
 
 
@@ -24,7 +24,7 @@
         <!-- Post Content Column -->
         <div class="col-lg-8">
             <!-- Preview Image -->
-            <img class="rounded" src="../static/images/syd-beach.jpg" alt="" height="500px">
+            <img id="main-pic" class="rounded" src="" alt="" height="550px" width="720px">
             <hr>
             <!-- Date/Time -->
             <p>Posted on {{ post.date }}</p>
@@ -36,21 +36,33 @@
 
             <!-- Enables user to Edit/Delete if they are the Author of the Post-->
             {% if user.username == post.profile.user.username %}
-            <button id="delete-btn">Delete</button>
-            <a href="{% url 'edit' post.id %}"> Edit</a>
+            <a id="delete-btn"><i class="fas fa-trash"></i></a>
+            <a href="{% url 'edit' post.id %}"><i class="fas fa-edit"></i></a>
             {% endif %}
+
 
         </div>
         <!-- Sidebar Widgets Column -->
-        <!-- TODO  ADVERTISING GIPHY OR SMTHG-->
         <div class="col-md-4">
-            <h2>SideBar Item</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nobis ipsum laboriosam minima, neque
-                molestias, saepe expedita placeat nesciunt labore ratione quam corrupti necessitatibus facilis, quisquam
-                animi quos. Quae consectetur molestias excepturi dolore architecto tenetur libero vero vitae? Enim
-                eligendi optio omnis voluptatum quia quos, cumque libero possimus iure aliquam!</p>
+            <h2>Recent Posts:</h2>
+            <!-- Posts (Foor-Loop Postings) -->
+            {% for post in posts %}
+            <div class="mb-4">
+                <a href="{% url 'post' post.id %}" class="card-link">
+                    <!-- Post Card -->
+                    <div class="card">
+                        <!-- Title -->
+                        <p class="m-2">
+                            <i class="fas fa-clone mr-4"></i>{{post.title}}
+                        </p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
         </div>
+        <!-- End of Side Bar -->
     </div>
+    <!-- /.row -->
 </div>
 
 <div id="delete-form">

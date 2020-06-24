@@ -17,13 +17,6 @@ body{
   color: var(--dark-blue);
 }
 
-.navbar{
-  border-bottom: 1px solid var(--orange);
-}
-
-.breadcrumb {
-  display: none;
-}
 
 .joined-date{
   font-size: 20px;
@@ -44,10 +37,15 @@ body{
   text-decoration: none;
 }
 
-#name-edit, #city-edit, #picture-edit{
-  
-
+.flex-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+
+
 /* input[type=submit] {
   border: none;
   width: 100px;

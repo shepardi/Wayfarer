@@ -9,7 +9,7 @@ let deleteBtn = $('#delete-btn');
 
 let mainPic = $('#main-pic');
 
-
+// Border & Picture change accordingly
 if (orange.val() == 'London') {
   $('#london').addClass("current");
   mainPic.attr('src', '../static/images/bigben.jpg');
@@ -32,7 +32,6 @@ if (orange.val() == 'Seattle') {
 
 // Pagination
 function pagination(number) {
-  console.log(posts.length)
   if (number == 0) {
     btnPrev.css('visibility', 'hidden')
   }
@@ -55,7 +54,7 @@ function pagination(number) {
 
 }
 
-pagination(paginationNumber)
+pagination(paginationNumber);
 
 
 btnPrev.on('click', function () {
