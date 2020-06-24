@@ -26,7 +26,7 @@
   <div class="row">
 
     <!-- Profile (Image) -->
-    <div class="col-md-6">
+    <div class="col-md-4">
 
       {% if img %}
       <!-- Custom Profile Picture -->
@@ -49,7 +49,7 @@
     </div>
 
     <!-- Profile (User Form) -->
-    <div class="flex-div col-md-4 ">
+    <div class="flex-div col-md-8 ">
       <!--  User First name Profile Form -->
       <form id="name-edit" action="{% url 'profile' %}" method="POST">
         {% csrf_token %}
@@ -61,7 +61,7 @@
       <!-- City name Form -->
       <form id="city-edit" action="{% url 'profile' %}" method="POST" class="my-3">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}
         <!-- <input type="submit" value="Submit"> -->
         <button id="city-edit-btn" class="btn-light rounded-pill" type="submit">Edit City</button>
       </form>

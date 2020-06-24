@@ -40,10 +40,11 @@ body{
 .flex-div{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
+.btn-light{
+  display: inline;
+}
 
 
 /* input[type=submit] {

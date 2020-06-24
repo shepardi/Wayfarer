@@ -9,12 +9,11 @@
 {% block content %}
 
 <!-- Page Content -->
-<div class="container">
+<div class="container edit-post">
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">{{ post.title }}
+    <h1 class=" mt-4 mb-3">{{ post.title }}
         <small>by
             {{ post.profile.user.username }}
-            <p class="float-right">{{ city }}</p>
         </small>
 
     </h1>
@@ -33,20 +32,17 @@
             <!-- Post Content -->
             <form action="{% url 'edit' post_id %}" method="POST">
                 {% csrf_token %}
-                <div class="card">
+                <div class=" edit-content card p-3">
                     <!-- Title -->
                     <p>Title: {{form.title}}</p>
                     <!-- Description -->
                     <p>Description: </p>{{ form.description }}
-                    <input type="submit">
+                    <input class="btn-light" type="submit">
                 </div>
-
             </form>
-            <hr>
 
         </div>
         <!-- Sidebar Widgets Column -->
-
     </div>
     <!-- /.row -->
 </div>

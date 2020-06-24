@@ -74,3 +74,26 @@ input[type=submit]:hover {
   font-size: 26px;
   padding-top: 10px;
 }
+
+.edit-post{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-30%);
+}
+
+.edit-hidden{
+  display: none;
+}
+
+.btn-light{
+  display: block;
+}
+
+.btn-light:hover{
+  background-color: var(--orange) !important;
+}
+
+.edit-content{
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
