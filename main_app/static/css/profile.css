@@ -18,7 +18,7 @@ body{
 }
 
 .navbar{
-  border-bottom: 1px solid var(--med-blue);
+  border-bottom: 1px solid var(--orange);
 }
 
 .breadcrumb {
@@ -46,3 +46,4 @@ input[type=submit]:hover {
   color: var(--white);
 }
  */
+

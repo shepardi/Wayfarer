@@ -18,7 +18,7 @@ body{
 }
 
 .navbar{
-  border-bottom: 1px solid var(--orange);
+  border-bottom: 1px solid var(--white);
 }
 
 .hidden{
