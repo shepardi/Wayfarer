@@ -19,23 +19,12 @@
 
     </h1>
 
-    <!-- Breadcrumbs -->
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="{% url 'home' %}">Home</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="{% url 'profile' %}">Profile</a>
-        </li>
-        <li class="breadcrumb-item active">{{ post.title }}</li>
-    </ol>
-
 
     <div class="row">
         <!-- Post Content Column -->
         <div class="col-lg-8">
             <!-- Preview Image -->
-            <img class="img-fluid rounded" src="../static/images/syd-beach.jpg" alt="">
+            <img class="rounded" src="../static/images/syd-beach.jpg" alt="" height="500px">
             <hr>
             <!-- Date/Time -->
             <p>Posted on {{ post.date }}</p>
@@ -47,7 +36,7 @@
 
             <!-- Enables user to Edit/Delete if they are the Author of the Post-->
             {% if user.username == post.profile.user.username %}
-            <a href="{% url 'delete' city_code post.id %}"> Delete</a>
+            <button id="delete-btn">Delete</button>
             <a href="{% url 'edit' post.id %}"> Edit</a>
             {% endif %}
 
@@ -62,9 +51,18 @@
                 eligendi optio omnis voluptatum quia quos, cumque libero possimus iure aliquam!</p>
         </div>
     </div>
-    <!-- /.row -->
 </div>
-<!-- /.container -->
+
+<div id="delete-form">
+    <p>Are you sure you want to delete this post?</p>
+    <form action="{% url 'delete' city_code post.id %}" method="GET">
+        <input type="submit" value="Yes">
+    </form>
+    <input id="no" type="submit" value="No">
+</div>
+
+
+
 {% endblock%}
 
 </html>

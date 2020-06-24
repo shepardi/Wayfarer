@@ -20,6 +20,22 @@
     </div>
 
 
+
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div id="container" class="modal-content">
+
+                <div class="modal-body">
+                    <form action="{% url 'cities' city_name %}" method="POST">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input id="city-name" type="text" value='{{city_name}}' readonly name="city">
+                        <input type="submit" value="Create Post">
+                    </form>
+                </div>
+            </div>
 </body>
 
 </html>

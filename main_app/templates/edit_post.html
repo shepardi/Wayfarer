@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<!-- Page Content -->
+<div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">{{ post.title }}
+        <small>by
+            {{ post.profile.user.username }}
+            <p class="float-right">{{ city }}</p>
+        </small>
+
+    </h1>
+
+    <div class="row">
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+            <hr>
+            <!-- Date/Time -->
+            <p>Posted on {{ post.date }}</p>
+
+            <hr>
+            <!-- Post Content -->
+            <form action="{% url 'edit' post_id %}" method="POST">
+                {% csrf_token %}
+                <div class="card">
+                    <!-- Title -->
+                    <p>Title: {{form.title}}</p>
+                    <!-- Description -->
+                    <p>Description: </p>{{ form.description }}
+                    <input type="submit">
+                </div>
+
+            </form>
+            <hr>
+
+            <!-- Enables user to Edit/Delete if they are the Author of the Post-->
+            {% if user.username == post.profile.user.username %}
+            <a href="{% url 'delete' post.current_city post.id %}"> Delete</a>
+            {% endif %}
+
+        </div>
+        <!-- Sidebar Widgets Column -->
+        <!-- TODO  ADVERTISING GIPHY OR SMTHG-->
+        <div class="col-md-4">
+            <h2>SideBar Item</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit vel quo ducimus veritatis aperiam eos
+                rem deleniti nam tenetur molestiae maxime dolores, necessitatibus quasi eius ut odio cumque ipsam magni?
+                Iusto repellat blanditiis sit dolore laudantium distinctio unde sint possimus!</p>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+
+
+{% endblock%}
