@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<script defer src="{% static 'scripts/app.js' %}"></script>
+<script defer src="{% static 'scripts/profile.js' %}"></script>
+
+{% endblock%}
+
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Title ( Profile: user ) -->
+  <h1 class="mt-4 mb-3">
+    <small>{{user.first_name}}</small>
+    <p class="joined-date float-right pt-3">Joined on: {{ user.date_joined }}
+    </p>
+
+  </h1>
+
+
+  <!-- Profile User Row -->
+  <div class="row profile-bg round">
+
+    <!-- Profile (Image) -->
+    <div class="col-md-4">
+
+      {% if img %}
+      <!-- Custom Profile Picture -->
+      <img class="img-fluid pt-2" src="{{ img.url }}" alt="" height="350px" width="350px">
+      {% else%}
+      <!-- Default Profile Picture -->
+      <img class="img-fluid pt-2"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Domestic_Cat_Face_Shot.jpg/800px-Domestic_Cat_Face_Shot.jpg"
+        alt="">
+      {% endif %}
+
+      <p>Your City: {{city}}</p>
+      <form id="picture-edit" action="{% url 'img_upload' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="img">
+        <!-- <input class="button" type="submit"> -->
+        <button id="picture-edit-btn" class="btn-light rounded-pill" type="submit">Edit Picture</button>
+      </form>
+
+    </div>
+
+    <!-- Profile (User Form) -->
+    <div class="flex-div col-md-4 ">
+      <!--  User First name Profile Form -->
+      <form id="name-edit" action="{% url 'profile' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder={{user.first_name}} name='name' class="">
+        <!-- <input type="submit" value="Submit"> -->
+        <button id="name-edit-btn" class="btn-light rounded-pill" type="submit">Edit Name</button>
+      </form>
+
+      <!-- City name Form -->
+      <form id="city-edit" action="{% url 'profile' %}" method="POST" class="my-3">
+        {% csrf_token %}
+        {{ form }}
+        <!-- <input type="submit" value="Submit"> -->
+        <button id="city-edit-btn" class="btn-light rounded-pill" type="submit">Edit City</button>
+      </form>
+    </div>
+  </div>
+  <!-- [END] Profile User Row -->
+
+  <!-- Related Posts Row-->
+  <h3 class="my-4">{{user.first_name}}'s Recent Posts:</h3>
+
+  <div class="row">
+
+    <!-- Posts (Foor-Loop Postings) -->
+    {% for post in posts %}
+    <div class="col-md-3 col-sm-6 mb-4">
+      <a href="{% url 'post' post.id %}" class="card-link">
+        <!-- Post Card -->
+        <div class="card">
+
+          <!-- Title -->
+          <p>{{post.title}}</p>
+
+          <!-- Picture -->
+          <img class="post-img" src="http://placehold.it/500x300" heigh="135vh">
+          <input class="post-input" type="text" value="{{ post.current_city}}" hidden="true">
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+  <!-- [END] Related Posts Row-->
+
+</div>
+<footer class="py-5 ">
+  <div class="container">
+
+  </div>
+</footer>
+
+{% endblock %}

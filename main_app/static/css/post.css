@@ -1,0 +1,99 @@
+:root {
+  /* Color Palette */
+  --white: #fff;
+  --dark-blue: #100935;
+  --orange: #FF9C20;
+  --pink: #F72AEE;
+  --purple: #973DFC;
+  --light-blue: #01C9FF;
+  --med-blue: #14ADFF;
+  --ocean-bue: #0071FF;
+  --fb-white: #F0F2F5;
+}
+
+body{
+  background-color: var(--fb-white);
+  max-height: 100vh;
+  color: var(--dark-blue);
+}
+
+
+#delete-form{
+  background-color: var(--dark-blue) ;
+  opacity: 90%;
+  color: var(--white);
+  text-align: center;
+  border-radius: 10px;
+  height: 250px;
+  width: 350px;
+  font-size: 20px;
+  padding: 20px 0;
+  display: none;
+  position: absolute;
+  left: 50%;  
+  transform: translateX(-50%);
+  top: 50%;
+}
+
+input[type=submit] {
+  border: none;
+  width: 120px;
+  background-color: var(--white);
+  color: var(--dark-blue);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 10px 0;
+  border-radius: 10px;
+  margin-top: 1rem;
+  outline: none;
+}
+
+input[type=submit]:hover {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.fa-trash{
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.fa-edit{
+  cursor: pointer;
+  font-size: 25px;
+  color: #100935;
+  margin-left: 20px;
+}
+
+.card{
+  border-radius: 10px;
+  color: var(--dark-blue);
+}
+
+.post-city{
+  font-size: 26px;
+  padding-top: 10px;
+}
+
+.edit-post{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-30%);
+}
+
+.edit-hidden{
+  display: none;
+}
+
+.btn-light{
+  display: block;
+}
+
+.btn-light:hover{
+  background-color: var(--orange) !important;
+}
+
+.edit-content{
+  background-color: var(--dark-blue);
+  color: var(--white);
+}

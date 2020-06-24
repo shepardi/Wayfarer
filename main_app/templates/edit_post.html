@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/post.css' %}">
+<script defer src="{% static 'scripts/app.js' %}"></script>
+
+{% endblock%}
+
+{% block content %}
+
+<!-- Page Content -->
+<div class="container edit-post">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class=" mt-4 mb-3">{{ post.title }}
+        <small>by
+            {{ post.profile.user.username }}
+        </small>
+
+    </h1>
+
+    <div class="row">
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+            <!-- Preview Image -->
+            <input id="city-name" type="" value="{{city}}" style="display: none;">
+            <img id="main-pic" class="rounded" src="" alt="" height="550px" width="720px">
+            <hr>
+            <!-- Date/Time -->
+            <p>Posted on {{ post.date }}</p>
+
+            <hr>
+            <!-- Post Content -->
+            <form action="{% url 'edit' post_id %}" method="POST">
+                {% csrf_token %}
+                <div class=" edit-content card p-3">
+                    <!-- Title -->
+                    <p>Title: {{form.title}}</p>
+                    <!-- Description -->
+                    <p>Description: </p>{{ form.description }}
+                    <input class="btn-light" type="submit">
+                </div>
+            </form>
+
+        </div>
+        <!-- Sidebar Widgets Column -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+
+
+{% endblock%}

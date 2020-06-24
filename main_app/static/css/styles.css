@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root {
+/* Color Palette */
+--white: #fff;
+  --dark-blue: #100935;
+  --orange: #FF9C20;
+  --pink: #F72AEE;
+  --purple: #973DFC;
+  --light-blue: #01C9FF;
+  --med-blue: #14ADFF;
+  --ocean-bue: #0071FF;
+  --fb-white: #F0F2F5;
+}
+
+body{  
+  font-family: 'Montserrat', sans-serif; 
+}
+
+a {
+  text-decoration: none;
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item{
+  margin-bottom: 30px;
+}
+
+.navbar{
+  height: 12.5vh;
+  background-color: var(--dark-blue);
+}
+
+.navbar a{
+  color: var(--white);
+  
+}
+
+.navbar a:hover{
+  color: var(--light-blue);
+}
+
+.my-4, .card-header{
+  text-align: center;
+}
+
+.city-tag{
+  background-color: var(--med-blue);
+  color:var(--white);
+}
+
+.city{
+  background-color: var(--ocean-blue);
+  color:var(--dark-blue);
+}
+
+.orange{
+  color: var(--orange);
+}

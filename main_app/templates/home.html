@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+<script defer src="{% static 'scripts/home.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block content %}
+
+
+
+<!-- ----------------------------- Slide Show View ----------------------------- -->
+<section>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One  -->
+      <div class="carousel-item active" style="background-image: url('../static/images/london-aerial.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+        </div>
+      </div>
+      <!-- Slide Two -->
+      <div class="carousel-item" style="background-image: url('../static/images/sanfran.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+        </div>
+      </div>
+      <!-- Slide Three  -->
+      <div class="carousel-item" style="background-image: url('../static/images/sydney.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+        </div>
+      </div>
+      <!-- Slide Four -->
+      <div class="carousel-item" style="background-image: url('../static/images/seattle.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+</section>
+
+
+<!-- ----------------------------- Modal Login Form ----------------------------- -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div id="container" class="modal-content">
+      <!-- Close Button -->
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- <span class="close-modal" aria-hidden="true">&times;</span> -->
+      </button>
+      <!-- Sign In -->
+
+      <div id="form-sign-in2" class="modal-body ">
+        <div id="form-sign-in" class="">
+          <h3 class="modal-title mb-2">Sign In</h3>
+        </div>
+        {% if err2 %}
+        <p>{{ err2 }}</p>
+        {% endif %}
+        <!-- Sign-In  Form -->
+        <form class="login-form" action="{% url 'home' %}" method="POST">
+          {% csrf_token %}
+          <input type="text" name="username" placeholder="Username" autocomplete="off">
+          <input type="password" name="password" placeholder="Password" autocomplete="off">
+          <input type="submit" value="Sign In">
+        </form>
+      </div>
+      <!-- Sign Up -->
+      <div id="form-sign-up2" class="modal-body">
+        <div id="form-sign-up" class="">
+          <h3 class="modal-title mb-2" id="staticBackdropLabel">Sign Up</h3>
+        </div>
+        <!-- Sign-Up Form -->
+        <form class="signup-form" action="{% url 'home' %}" method="POST">
+          {% if err %}
+          <p> {{err}} </p>
+          {% endif %}
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="text" name='name' placeholder="Name" autocomplete="off">
+          <input type="text" name='username' placeholder="Username" autocomplete="off">
+          <input type="password" name='password' placeholder="Password" autocomplete="off">
+          <input type="email" name='email' placeholder="Email" autocomplete="off">
+          <input type="submit" value="Sign Up">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="container">
+  <h1 class="my-4">Welcome To Wayfarer!</h1>
+  <div class="row">
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">Destinations</h4>
+        <div class="card-body">
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore et eos tempora quia
+            molestiae, doloremque assumenda beatae. Odio, vel ratione.</p>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">Explore</h4>
+        <div class="card-body">
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci illo iure voluptate,
+            non tempora temporibus veniam minus vitae delectus in!.</p>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">Leisure</h4>
+        <div class="card-body">
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. At nostrum et, tenetur dolore
+            ducimus odit dolorem laboriosam esse! Laborum, accusamus?.</p>
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="py-5 ">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy;2020 - Wayfarer</p>
+  </div>
+</footer>
+
+<!-- Waferer is .... -->
+{% endblock %}
