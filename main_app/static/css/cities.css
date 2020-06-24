@@ -13,11 +13,12 @@
 
 body{
   background-color: var(--dark-blue);
+  color: var(--dark-blue);
   max-height: 100vh;
 }
 
 .navbar{
-  border-bottom: 1px solid var(--med-blue);
+  border-bottom: 1px solid var(--orange);
 }
 
 
@@ -36,15 +37,11 @@ body{
 }
 
 .container-fluid{
-  background-color: var(--dark-blue);
+  background-color: var(--fb-white);
 }
 
 h2, p {
-  color: var(--white);
-}
-
-.line{
-  color: var(--white);
+  color: var(--dark-blue);
 }
 
 .border1 {
@@ -52,7 +49,7 @@ h2, p {
 }
 
 .btn-white{
-  color: var(--white)
+  color: var(--dark-blue)
 }
 
 .btn-white:hover{

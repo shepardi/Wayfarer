@@ -45,18 +45,19 @@
       <!-- Navbar containter -->
       <div class="container">
         <!-- Logo -->
-        <a class="navbar-brand" href="/"><img src="../static/images/logo.png" alt="">WAYFARER</a>
+        <a class="navbar-brand" href="/"><img src="../static/images/logo.png" alt=""><span
+            class="pt-6">WAYFARER</span></a>
         <!-- Left Side of Navbar -->
         <div class="">
           <ul class=" navbar-nav ml-auto">
             {% if not user.is_authenticated %}
             <!-- Sign In -->
             <li class="nav-item">
-              <a id="btn-sign-in" class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a>
+              <a id="btn-sign-in" class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
             </li>
             <!-- Sign Up -->
             <li class="nav-item">
-              <a id="btn-sign-up" class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">REGISTER</a>
+              <a id="btn-sign-up" class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Register</a>
             </li>
             {% else %}
 
@@ -65,11 +66,11 @@
               <a href="/profile" class="nav-link">{{user}}</a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'cities' 'London' %}" class="nav-link">CITIES</a>
+              <a href="{% url 'cities' 'London' %}" class="nav-link">Cities</a>
 
             </li>
             <li class="nav-item">
-              <a href="{% url 'logout' %}" class='nav-link'>LOGOUT</a>
+              <a href="{% url 'logout' %}" class='nav-link'>Logout</a>
             </li>
             {% endif %}
 
